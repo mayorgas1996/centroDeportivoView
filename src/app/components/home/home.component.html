@@ -1,0 +1,115 @@
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+
+  <!-- Barra de navegación para un Administrador -->
+
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" *ngIf="rol == 'Administrador'">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link" [routerLink]="['administracion']" [routerLinkActive]="['active']" aria-haspopup="true" aria-expanded="false">
+              Administración
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" [routerLink]="['centros']" [routerLinkActive]="['active']" aria-haspopup="true" aria-expanded="false">
+              Centros Deportivos
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" [routerLink]="['direccion']" [routerLinkActive]="['active']" aria-haspopup="true" aria-expanded="false">
+              Dirección
+            </a>
+          </li>
+
+        </ul>
+    </div>
+
+<!-- Barra de navegación para un Director -->
+<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" *ngIf="rol == 'Director'">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['contabilidad']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Contabilidad
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['personal']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Personal
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['actividades']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Actividades
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['pistas']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Pistas
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['salas']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Salas
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['planes']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Planes
+        </a>
+      </li>
+    </ul>
+</div>
+
+
+<!-- Barra de navegación para un Tecnico -->
+<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" *ngIf="rol == 'Técnico'">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['usuarios']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Usuarios
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['ejercicios']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Ejercicios
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['rutinas']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Rutinas
+        </a>
+      </li>
+    </ul>
+</div>
+
+<!--Botón desplegable independientemente del rol que acceda al sistema -->
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto pr-3">
+            <li class="dropdown">
+                <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" [routerLinkActive]="['active']">
+                  {{rol}} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <a [routerLink]="['my_profile']">
+                      Mis datos
+                    </a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a (click)="logout()">
+                      Salir
+                    </a>
+                  </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class=" col-lg-12 px-5 mt-2">
+
+
+<h1>Estas en {{title}}</h1>
+
+<router-outlet></router-outlet>
+</div>

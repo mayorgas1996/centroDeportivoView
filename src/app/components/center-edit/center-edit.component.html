@@ -1,0 +1,45 @@
+<h2>Modificar {{center.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #centerProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Centro Deportivo actualizado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización del Centro Deportivo.
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Nombre</label>
+      <input type="name" class="form-control" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="center.NOMBRE" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" #email="ngModel" [(ngModel)]="center.EMAIL" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Teléfono de contacto</label>
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" #telefono="ngModel" [(ngModel)]="center.TELEFONO">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Dirección</label>
+    <input type="text" class="form-control" placeholder="Direccion" name="direccion" #direccion="ngModel" [(ngModel)]="center.DIRECCION">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control" name="municipio" #municipio="ngModel" [(ngModel)]="center.MUNICIPIO">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Provincia</label>
+      <input type="text" class="form-control" name="provincia" #provincia="ngModel" [(ngModel)]="center.PROVINCIA">
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!centerProfileForm.form.valid">Modificar</button>
+
+</form>

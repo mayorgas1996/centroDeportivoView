@@ -1,0 +1,38 @@
+<h2>Detalles de {{center.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #centerProfileForm="ngForm">
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Nombre</label>
+      <input type="name" class="form-control" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="center.NOMBRE" readonly>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" #email="ngModel" [(ngModel)]="center.EMAIL" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Teléfono de contacto</label>
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" #telefono="ngModel" [(ngModel)]="center.TELEFONO" readonly>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Dirección</label>
+    <input type="text" class="form-control" placeholder="Direccion" name="direccion" #direccion="ngModel" [(ngModel)]="center.DIRECCION" readonly>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control" name="municipio" #municipio="ngModel" [(ngModel)]="center.MUNICIPIO" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Provincia</label>
+      <input type="text" class="form-control" name="provincia" #provincia="ngModel" [(ngModel)]="center.PROVINCIA" readonly>
+    </div>
+
+  </div>
+
+</form>

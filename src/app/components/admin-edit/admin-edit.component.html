@@ -1,0 +1,45 @@
+<h2>Modificar {{admin.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #adminProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Administrador actualizado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización del Administrador.
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Nombre</label>
+      <input type="name" class="form-control" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="admin.NOMBRE" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" #email="ngModel" [(ngModel)]="admin.EMAIL" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Teléfono de contacto</label>
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" #telefono="ngModel" [(ngModel)]="admin.TELEFONO">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Domicilio</label>
+    <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" #domicilio="ngModel" [(ngModel)]="admin.DOMICILIO">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control" name="municipio" #municipio="ngModel" [(ngModel)]="admin.MUNICIPIO">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Provincia</label>
+      <input type="text" class="form-control" name="provincia" #provincia="ngModel" [(ngModel)]="admin.PROVINCIA">
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!adminProfileForm.form.valid">Modificar</button>
+
+</form>

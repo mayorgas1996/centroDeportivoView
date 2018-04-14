@@ -1,0 +1,61 @@
+<h2 class="col-lg-6 offset-lg-3">{{title}}</h2>
+
+<br />
+
+<form class="col-lg-6 offset-lg-3" #myProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Datos actualizados con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    No se han podido actualizar tus datos.
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nombre</label>
+      <input type="name" class="form-control" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="my_profile.nombre" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Contraseña</label>
+      <input type="password" class="form-control" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="my_profile.password" required>
+      <small class="form-text text-muted">Tu contraseña será guardada de manera segura.</small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" #email="ngModel" [(ngModel)]="my_profile.email" required>
+      <small class="form-text text-muted">Este campo se utilizará para el inicio de sesión.</small>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Teléfono de contacto</label>
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" #telefono="ngModel" [(ngModel)]="my_profile.telefono">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Domicilio</label>
+    <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" #domicilio="ngModel" [(ngModel)]="my_profile.domicilio">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control" name="municipio" #municipio="ngModel" [(ngModel)]="my_profile.municipio">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Provincia</label>
+      <select class="form-control" name="provincia" #provincia="ngModel" [(ngModel)]="my_profile.provincia">
+        <option>Almeria</option>
+        <option>Cádiz</option>
+        <option>Córdoba</option>
+        <option>Granada</option>
+        <option>Huelva</option>
+        <option>Jaén</option>
+        <option>Málaga</option>
+        <option>Sevilla</option>
+      </select>
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!myProfileForm.form.valid">Actualizar</button>
+</form>

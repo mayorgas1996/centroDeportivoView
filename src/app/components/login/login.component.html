@@ -1,0 +1,49 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>{{title}}</h1>
+
+<div class="container col-lg-4 col-lg-offset-4">
+
+  <div>
+    <section>
+      <div class="panel panel-default top">
+        <div class="panel-body">
+          <br/>
+          <h3 class="text-center">Bienvenido</h3>
+
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="input-group input-group-lg">
+              <input #EMAIL="ngModel" [(ngModel)]="login.email" name="EMAIL" type="email" id="email" class="form-control" placeholder="Email" aria-describedby="sizing-addon1"  required />
+            </div>
+            <span *ngIf="!EMAIL.valid && EMAIL.touched">
+              El email es obligatorio
+            </span>
+            <br>
+            <div class="input-group input-group-lg">
+              <input #PASSWORD="ngModel" [(ngModel)]="login.password" name="PASSWORD" type="password" id="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" required />
+            </div>
+            <span *ngIf="!PASSWORD.valid && PASSWORD.touched">
+              La contraseña es obligatoria
+            </span>
+            <br>
+            <div class="form-group">
+              <select class="form-control" name="ROL" id="sel1" #ROL="ngModel" [(ngModel)]="login.rol">
+                <option selected>Administrador</option>
+                <option>Director</option>
+                <option>Técnico</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.form.valid">Ingresar</button>
+
+          </form>
+          <br>
+          <div class="aler alert-danger" *ngIf="status == 'error'">
+            {{error_message}}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>

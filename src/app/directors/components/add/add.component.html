@@ -1,0 +1,66 @@
+<h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Director creado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación del Director.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+    <p>
+
+
+    <label>Centro Deportivo asignado</label>
+    <select class="form-control" name="centro" [(ngModel)]="director.ID_CENTRO" required>
+      <option *ngFor="let center of centers" value="{{center.ID_CENTRO}}">{{center.NOMBRE}}</option>
+    </select>
+
+  </p>
+    <p>
+      <label>Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="director.NOMBRE" class="form-control" required/>
+      <span *ngIf="!name.valid && name.touched">
+        El nombre es obligatorio
+      </span>
+    </p>
+    <p>
+      <label>Email</label>
+      <input type="email" name="email" #email="ngModel" [(ngModel)]="director.EMAIL" class="form-control" required/>
+      <span *ngIf="!email.valid && email.touched">
+        El email es obligatorio
+      </span>
+    </p>
+    <p>
+      <label>Teléfono</label>
+      <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="director.TELEFONO" class="form-control"/>
+    </p>
+    <p>
+      <label>Documentacion</label>
+      <input type="text" name="documentacion" #documentacion="ngModel" [(ngModel)]="director.DOCUMENTACION" class="form-control"/>
+    </p>
+    <p>
+      <label>Fecha Nacimiento</label>
+      <input type="text" name="fecha_nacimiento" placeholder="yyyy/mm/dd" #fecha_nacimiento="ngModel" [(ngModel)]="director.FECHA_NACIMIENTO" class="form-control"/>
+    </p>
+    <p>
+      <label>Domicilio</label>
+      <input type="text" name="domicilio" #domicilio="ngModel" [(ngModel)]="director.DOMICILIO" class="form-control"/>
+    </p>
+    <p>
+      <label>Municipio</label>
+      <input type="text" name="municipio" #municipio="ngModel" [(ngModel)]="director.MUNICIPIO" class="form-control"/>
+    </p>
+    <p>
+      <label>Provincia</label>
+      <input type="text" name="provincia" #provincia="ngModel" [(ngModel)]="director.PROVINCIA" class="form-control"/>
+    </p>
+    <p>
+      <label>Salario</label>
+      <input type="text" name="salario" #salario="ngModel" [(ngModel)]="director.SALARIO" class="form-control"/>
+    </p>
+
+
+    <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+  </form>
+</div>

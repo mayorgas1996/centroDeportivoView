@@ -1,0 +1,43 @@
+<h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Administrador creado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación del Administrador.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label>Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="admin.nombre" class="form-control" required/>
+      <span *ngIf="!name.valid && name.touched">
+        El nombre es obligatorio
+      </span>
+    </p>
+    <p>
+      <label>Email</label>
+      <input type="email" name="email" #email="ngModel" [(ngModel)]="admin.email" class="form-control" required/>
+      <span *ngIf="!email.valid && email.touched">
+        El email es obligatorio
+      </span>
+    </p>
+    <p>
+      <label>Teléfono</label>
+      <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="admin.telefono" class="form-control"/>
+    </p>
+    <p>
+      <label>Domicilio</label>
+      <input type="text" name="domicilio" #domicilio="ngModel" [(ngModel)]="admin.domicilio" class="form-control"/>
+    </p>
+    <p>
+      <label>Municipio</label>
+      <input type="text" name="municipio" #municipio="ngModel" [(ngModel)]="admin.municipio" class="form-control"/>
+    </p>
+    <p>
+      <label>Provincia</label>
+      <input type="text" name="provincia" #provincia="ngModel" [(ngModel)]="admin.provincia" class="form-control"/>
+    </p>
+    <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+  </form>
+</div>
