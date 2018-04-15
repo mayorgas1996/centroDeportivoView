@@ -17,6 +17,7 @@ import { CenterDetailComponent } from './components/center-detail/center-detail.
 import { CenterEditComponent } from './components/center-edit/center-edit.component';
 import { DirectorDetailComponent } from './components/director-detail/director-detail.component';
 import { DirectorEditComponent } from './components/director-edit/director-edit.component';
+import { FinanceEditComponent } from './components/finance-edit/finance-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DirectorEditComponent } from './components/director-edit/director-edit.
     CenterDetailComponent,
     CenterEditComponent,
     DirectorDetailComponent,
-    DirectorEditComponent
+    DirectorEditComponent,
+    FinanceEditComponent
   ],
   imports: [
     BrowserModule,

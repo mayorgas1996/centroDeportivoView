@@ -28,11 +28,6 @@
 <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" *ngIf="rol == 'Director'">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link" [routerLink]="['contabilidad']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
-          Contabilidad
-        </a>
-      </li>
-      <li class="nav-item dropdown">
         <a class="nav-link" [routerLink]="['personal']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
           Personal
         </a>
@@ -77,6 +72,11 @@
       <li class="nav-item dropdown">
         <a class="nav-link" [routerLink]="['rutinas']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
           Rutinas
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" [routerLink]="['contabilidad']" [routerLinkActive]="['active']"  aria-haspopup="true" aria-expanded="false">
+          Contabilidad
         </a>
       </li>
     </ul>

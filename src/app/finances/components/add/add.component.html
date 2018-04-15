@@ -1,1 +1,32 @@
 <h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Operación creada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación de la Operación.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Tipo operación</label>
+          <select class="form-control" name="operacion"  #cantidad="ngModel" [(ngModel)]="operacion.TIPO_OPERACION" required>
+            <option value="ingreso">Ingreso</option>
+            <option value="gasto">Gasto</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Cantidad</label>
+            <input type="text" name="cantidad" #cantidad="ngModel" placeholder="Cantidad de dinero" [(ngModel)]="operacion.CANTIDAD" class="form-control"/>
+        </div>
+      </div>
+      <p>
+        <label>Motivo</label>
+        <input type="text" name="motivo" #motivo="ngModel" placeholder="Motivo de la operación" [(ngModel)]="operacion.MOTIVO" class="form-control"/>
+      </p>
+
+      <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+    </form>
+  </div>

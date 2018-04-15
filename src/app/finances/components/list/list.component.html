@@ -1,1 +1,62 @@
-<h3>{{title}}</h3>
+<div class="col-lg-12">
+
+  <h3>{{title}}</h3>
+
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Operación borrada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    No se ha podido borrar la Operación.
+  </div>
+
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th>Motivo</th>
+        <th>Cantidad (€)</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let finance of finances">
+      <tr>
+        <td>
+          {{finance.MOTIVO}}
+        </td>
+        <td>
+          {{finance.CANTIDAD}}
+        </td>
+        <td>
+          {{finance.FECHA}}
+        </td>
+        <td>
+          <a [routerLink]="['/home/operacion/edit', finance.ID_OPERACION]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
+          <a href="#myModal-{{finance.ID_OPERACION }}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
+
+          <!-- Modal HTML -->
+          <div id="myModal-{{finance.ID_OPERACION}}" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">¿Estás seguro?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>¿Seguro que quieres eliminar <strong>{{finance.MOTIVO}}</strong>?</p>
+                  <p class="text-warning"><small>Si borras esta Operación, ya no pertenecerá al sistema.</small></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <button type="button" (click)="deleteFinance(finance.ID_OPERACION )" class="btn btn-primary">Borrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

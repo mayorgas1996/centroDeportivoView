@@ -1,0 +1,26 @@
+<h2>{{title}} operación</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #financeProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Operación actualizada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización de la Operación.
+  </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Fecha</label>
+          <input type="text" class="form-control" name="fecha" #fecha="ngModel" [(ngModel)]="finance.FECHA">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Cantidad</label>
+            <input type="text" name="cantidad" #cantidad="ngModel" placeholder="Cantidad de dinero" [(ngModel)]="finance.CANTIDAD" class="form-control"/>
+        </div>
+      </div>
+      <p>
+        <label>Motivo</label>
+        <input type="text" name="motivo" #motivo="ngModel" placeholder="Motivo de la operación" [(ngModel)]="finance.MOTIVO" class="form-control"/>
+      </p>
+
+      <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!financeProfileForm.form.valid" />
+    </form>
