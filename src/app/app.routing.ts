@@ -12,6 +12,8 @@ import { CenterEditComponent  } from './components/center-edit/center-edit.compo
 import { DirectorDetailComponent  } from './components/director-detail/director-detail.component';
 import { DirectorEditComponent  } from './components/director-edit/director-edit.component';
 import { FinanceEditComponent  } from './components/finance-edit/finance-edit.component';
+import { StaffDetailComponent  } from './components/staff-detail/staff-detail.component';
+import { StaffEditComponent  } from './components/staff-edit/staff-edit.component';
 
 //Routes
 export const appRoutes: Routes = [
@@ -38,7 +40,9 @@ export const appRoutes: Routes = [
       {path: 'centro/edit/:id', component: CenterEditComponent},
       {path: 'director/:id', component: DirectorDetailComponent},
       {path: 'director/edit/:id', component: DirectorEditComponent},
-      {path: 'operacion/edit/:id', component: FinanceEditComponent}
+      {path: 'operacion/edit/:id', component: FinanceEditComponent},
+      {path: 'staff/:id', component: StaffDetailComponent},
+      {path: 'staff/edit/:id', component: StaffEditComponent},
     ]
   },
   {path: '**'   , component: HomeComponent}

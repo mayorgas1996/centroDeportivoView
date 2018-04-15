@@ -1,0 +1,87 @@
+<h2>Modificar {{staff.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #staffProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Técnico actualizado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización del Técnico.
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Nombre</label>
+      <input type="name" class="form-control" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="staff.NOMBRE" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" #email="ngModel" [(ngModel)]="staff.EMAIL" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Teléfono de contacto</label>
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" #telefono="ngModel" [(ngModel)]="staff.TELEFONO">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Fecha Nacimiento</label>
+      <input type="text" class="form-control" name="fecha_nac" #fecha_nac="ngModel" [(ngModel)]="staff.FECHA_NACIMIENTO">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Documentación</label>
+      <input type="text" class="form-control" name="documentacion" #documentacion="ngModel" [(ngModel)]="staff.DOCUMENTACION">
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label>Domicilio</label>
+    <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" #domicilio="ngModel" [(ngModel)]="staff.DOMICILIO">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control" name="municipio" #municipio="ngModel" [(ngModel)]="staff.MUNICIPIO">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Provincia</label>
+      <input type="text" class="form-control" name="provincia" #provincia="ngModel" [(ngModel)]="staff.PROVINCIA">
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label>Salario</label>
+    <input type="text" class="form-control" name="salario" #salario="ngModel" [(ngModel)]="staff.SALARIO">
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-8">
+
+      <p>
+        <label>Especialidad</label>
+        <input type="text" name="especialidad" #especialidad="ngModel" [(ngModel)]="staff.ESPECIALIDAD" class="form-control"/>
+      </p>
+    </div>
+    <div class="col-md-4 ">
+
+      <br/>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="administrativo" #administrativo="ngModel" [(ngModel)]="staff.ADMINISTRATIVO" value=true>
+          Administrativo
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="deportivo" #deportivo="ngModel" [(ngModel)]="staff.DEPORTIVO" value=true>
+          Deportivo
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="!staffProfileForm.form.valid">Modificar</button>
+
+</form>

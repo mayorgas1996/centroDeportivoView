@@ -18,6 +18,8 @@ import { CenterEditComponent } from './components/center-edit/center-edit.compon
 import { DirectorDetailComponent } from './components/director-detail/director-detail.component';
 import { DirectorEditComponent } from './components/director-edit/director-edit.component';
 import { FinanceEditComponent } from './components/finance-edit/finance-edit.component';
+import { StaffDetailComponent } from './components/staff-detail/staff-detail.component';
+import { StaffEditComponent } from './components/staff-edit/staff-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FinanceEditComponent } from './components/finance-edit/finance-edit.com
     CenterEditComponent,
     DirectorDetailComponent,
     DirectorEditComponent,
-    FinanceEditComponent
+    FinanceEditComponent,
+    StaffDetailComponent,
+    StaffEditComponent
   ],
   imports: [
     BrowserModule,

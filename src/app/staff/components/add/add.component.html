@@ -1,1 +1,81 @@
 <h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Técnico creado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación del Técnico.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+    <p>
+      <label>Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="staff.NOMBRE" class="form-control" required/>
+      <span *ngIf="!name.valid && name.touched">
+        El nombre es obligatorio
+      </span>
+    </p>
+    <p>
+      <label>Email</label>
+      <input type="email" name="email" #email="ngModel" [(ngModel)]="staff.EMAIL" class="form-control" required/>
+      <span *ngIf="!email.valid && email.touched">
+        El email es obligatorio
+      </span>
+    </p>
+    <p>
+      <label>Teléfono</label>
+      <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="staff.TELEFONO" class="form-control"/>
+    </p>
+    <p>
+      <label>Documentacion</label>
+      <input type="text" name="documentacion" #documentacion="ngModel" [(ngModel)]="staff.DOCUMENTACION" class="form-control" required/>
+    </p>
+    <p>
+      <label>Fecha Nacimiento</label>
+      <input type="text" name="fecha_nacimiento" placeholder="yyyy/mm/dd" #fecha_nacimiento="ngModel" [(ngModel)]="staff.FECHA_NACIMIENTO" class="form-control" required/>
+    </p>
+    <p>
+      <label>Domicilio</label>
+      <input type="text" name="domicilio" #domicilio="ngModel" [(ngModel)]="staff.DOMICILIO" class="form-control"/>
+    </p>
+    <p>
+      <label>Municipio</label>
+      <input type="text" name="municipio" #municipio="ngModel" [(ngModel)]="staff.MUNICIPIO" class="form-control"/>
+    </p>
+    <p>
+      <label>Provincia</label>
+      <input type="text" name="provincia" #provincia="ngModel" [(ngModel)]="staff.PROVINCIA" class="form-control"/>
+    </p>
+    <p>
+      <label>Salario</label>
+      <input type="text" name="salario" #salario="ngModel" [(ngModel)]="staff.SALARIO" class="form-control"/>
+    </p>
+    <div class="row mb-3">
+      <div class="col-md-8">
+
+        <p>
+          <label>Especialidad</label>
+          <input type="text" name="especialidad" #especialidad="ngModel" [(ngModel)]="staff.ESPECIALIDAD" class="form-control"/>
+        </p>
+      </div>
+      <div class="col-md-4 ">
+
+        <br />
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="administrativo" #administrativo="ngModel" [(ngModel)]="staff.ADMINISTRATIVO" value=true checked>
+            Administrativo
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="deportivo" #deportivo="ngModel" [(ngModel)]="staff.DEPORTIVO" value=true>
+            Deportivo
+          </label>
+        </div>
+      </div>
+    </div>
+    <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+  </form>
+</div>

@@ -1,0 +1,71 @@
+<h2>Detalles de {{staff.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #staffProfileForm="ngForm">
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Nombre</label>
+      <input type="name" class="form-control" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="staff.NOMBRE" readonly>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" #email="ngModel" [(ngModel)]="staff.EMAIL" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Teléfono de contacto</label>
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" #telefono="ngModel" [(ngModel)]="staff.TELEFONO" readonly>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Fecha Nacimiento</label>
+      <input type="text" class="form-control" name="fecha_nac" #fecha_nac="ngModel" [(ngModel)]="staff.FECHA_NACIMIENTO" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Documentación</label>
+      <input type="text" class="form-control" name="documentacion" #documentacion="ngModel" [(ngModel)]="staff.DOCUMENTACION" readonly>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Domicilio</label>
+    <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" #domicilio="ngModel" [(ngModel)]="staff.DOMICILIO" readonly>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control" name="municipio" #municipio="ngModel" [(ngModel)]="staff.MUNICIPIO" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Provincia</label>
+      <input type="text" class="form-control" name="provincia" #provincia="ngModel" [(ngModel)]="staff.PROVINCIA" readonly>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label>Salario</label>
+    <input type="text" class="form-control" name="salario" #salario="ngModel" [(ngModel)]="staff.SALARIO" readonly>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-8">
+
+      <p>
+        <label>Especialidad</label>
+        <input type="text" name="especialidad" #especialidad="ngModel" [(ngModel)]="staff.ESPECIALIDAD" class="form-control" readonly/>
+      </p>
+    </div>
+    <div class="col-md-4 ">
+
+      <br />
+        <label class="form-check-label" *ngIf="staff.ADMINISTRATIVO">
+          Tipo: Administrativo
+        </label>
+        <label class="form-check-label" *ngIf="staff.DEPORTIVO">
+          Tipo: Deportivo
+        </label>
+    </div>
+  </div>
+
+</form>
