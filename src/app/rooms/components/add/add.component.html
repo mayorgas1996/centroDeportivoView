@@ -1,1 +1,30 @@
 <h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Sala creada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación de la Sala.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-row col-lg-12">
+      <div class="form-group col-lg-8">
+      <p>
+        <label>Nombre</label>
+        <input type="text" name="nombre" #nombre="ngModel" placeholder="Nombre de la sala" [(ngModel)]="room.NOMBRE" class="form-control"/>
+      </p>
+      </div>
+      <div class="form-group col-lg-4">
+
+
+      <p>
+        <label>Aforo</label>
+        <input type="number" name="aforo" #aforo="ngModel" placeholder="Aforo de la sala" [(ngModel)]="room.AFORO" class="form-control"/>
+      </p>
+</div>
+</div>
+      <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+    </form>
+  </div>

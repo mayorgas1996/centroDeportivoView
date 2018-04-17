@@ -1,1 +1,52 @@
 <h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Ejercicio creado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación del Ejercicio.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Nombre</label>
+            <input type="text" name="nombre" #nombre="ngModel" placeholder="Nombre del ejercicio" [(ngModel)]="exercise.NOMBRE" class="form-control"/>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Grupo Muscular</label>
+          <select class="form-control" name="actividad"  #actividad="ngModel" [(ngModel)]="exercise.TIPO_ACTIVIDAD" required>
+            <option value="Pectoral" selected>Acuática</option>
+            <option value="Espalda">Espalda</option>
+            <option value="Piernas">Piernas</option>
+            <option value="Triceps">Tríceps</option>
+            <option value="Biceps">Bíceps</option>
+            <option value="Antebrazos">Antebrazos</option>
+            <option value="Abdomen">Abdomen</option>
+            <option value="Hombros">Hombros</option>
+            <option value="Gluteos">Glúteos</option>
+
+          </select>
+        </div>
+
+      </div>
+      <p>
+        <label>Dificultad</label>
+        <select class="form-control" name="actividad"  #actividad="ngModel" [(ngModel)]="exercise.DIFICULTAD" required>
+          <option value="Baja" selected>Baja</option>
+          <option value="Media-Baja">Media-Baja</option>
+          <option value="Media">Media</option>
+          <option value="Media-Alta">Media-Alta</option>
+          <option value="Alta">Alta</option>
+          <option value="Muy Alta">Muy Alta</option>
+
+        </select>
+      </p>
+      <p>
+        <label>Información</label>
+        <textarea name="informacion" #informacion="ngModel" [(ngModel)]="exercise.INFORMACION" class="form-control"></textarea>
+      </p>
+      <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+    </form>
+  </div>

@@ -1,1 +1,74 @@
-<h3>{{title}}</h3>
+<div class="col-lg-12">
+
+  <h3>{{title}}</h3>
+
+  <div class="input-group">
+    <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Nombre </button>
+    <input [(ngModel)]="busqueda" class="form-control"
+           placeholder="¡Te puedo ayudar a buscar todo lo que quieras!">
+  </div>
+
+  <br />
+
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Pista Deportiva borrada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    No se ha podido borrar la Pista Deportiva.
+  </div>
+
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th>Nombre</th>
+        <th>Precios (Iluminación)</th>
+        <th>Hora inicio iluminación</th>
+        <th>Hora apertura / cierre</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let court of courts">
+      <tr>
+        <td>
+          {{court.NOMBRE}}
+        </td>
+        <td>
+          {{court.PRECIO_SIN_LUZ}} ({{court.PRECIO_CON_LUZ}})
+        </td>
+        <td>
+          {{court.HORA_INICIO_LUZ}}
+        </td>
+        <td>
+          {{court.HORA_APERTURA}} / {{court.HORA_CIERRE}}
+        </td>
+        <td>
+          <a [routerLink]="['/home/pista', court.ID_PISTA]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
+          <a [routerLink]="['/home/pista/edit', court.ID_PISTA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
+          <a href="#myModal-{{court.ID_PISTA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
+
+          <!-- Modal HTML -->
+          <div id="myModal-{{court.ID_PISTA}}" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">¿Estás seguro?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>¿Seguro que quieres eliminar <strong>{{court.NOMBRE}}</strong>?</p>
+                  <p class="text-warning"><small>Si borras esta Pista Deportiva, ya no pertenecerá al sistema.</small></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <button type="button" (click)="deleteCenter(court.ID_PISTA)" class="btn btn-primary">Borrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
