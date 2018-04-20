@@ -1,0 +1,80 @@
+<h2>Detalles de {{user.NOMBRE}}</h2>
+
+
+
+<form class="col-lg-6 offset-lg-3 mt-5" #userProfileForm="ngForm">
+  <div class="alert alert-info" *ngIf="user.ACTIVO">
+    Usuario activo actualmente.
+  </div>
+  <div class="alert alert-info" *ngIf="!user.ACTIVO">
+    Usuario dado de baja.
+  </div>
+        <div class="form-row ">
+
+          <div class="from-group col-lg-8">
+            <p>
+
+        <label>Plan asignado</label>
+        <select class="form-control" name="plan" [(ngModel)]="user.ID_PLAN" readonly>
+          <option value="{{user.ID_PLAN}}" selected>{{user.PLAN}}</option>
+        </select>
+  </p>
+        </div>
+        <div class="from-group col-lg-4">
+            <p>
+          <label>Finalización plan</label>
+          <input type="date" name="fecha_fin" #fecha_fin="ngModel" [(ngModel)]="user.FECHA_FIN" class="form-control" readonly/>
+          </p>
+        </div>
+
+      </div>
+
+      <p>
+        <label>Nombre</label>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="user.NOMBRE" class="form-control" readonly/>
+        <span *ngIf="!name.valid && name.touched">
+          El nombre es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Email</label>
+        <input type="email" name="email" #email="ngModel" [(ngModel)]="user.EMAIL" class="form-control" readonly/>
+        <span *ngIf="!email.valid && email.touched">
+          El email es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Teléfono</label>
+        <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="user.TELEFONO" class="form-control" readonly/>
+      </p>
+      <p>
+        <label>Documentacion</label>
+        <input type="text" name="documentacion" #documentacion="ngModel" [(ngModel)]="user.DOCUMENTACION" class="form-control" readonly/>
+      </p>
+      <p>
+        <label>IBAN</label>
+        <input type="text" name="iban" #iban="ngModel" [(ngModel)]="user.IBAN" class="form-control" readonly/>
+      </p>
+      <p>
+        <label>Fecha Nacimiento</label>
+        <input type="date" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="user.FECHA_NAC" class="form-control" readonly/>
+      </p>
+
+      <p>
+        <label>Domicilio</label>
+        <input type="text" name="domicilio" #domicilio="ngModel" [(ngModel)]="user.DIRECCION" class="form-control" readonly/>
+      </p>
+      <p>
+        <label>Municipio</label>
+        <input type="text" name="municipio" #municipio="ngModel" [(ngModel)]="user.MUNICIPIO" class="form-control" readonly/>
+      </p>
+      <p>
+        <label>Provincia</label>
+        <input type="text" name="provincia" #provincia="ngModel" [(ngModel)]="user.PROVINCIA" class="form-control" readonly/>
+      </p>
+      <p>
+        <label>Observaciones</label>
+        <textarea name="observaciones" #observaciones="ngModel" [(ngModel)]="user.OBSERVACIONES" class="form-control" readonly></textarea>
+      </p>
+
+</form>

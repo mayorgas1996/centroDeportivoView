@@ -14,6 +14,8 @@ import { DirectorEditComponent  } from './components/director-edit/director-edit
 import { FinanceEditComponent  } from './components/finance-edit/finance-edit.component';
 import { StaffDetailComponent  } from './components/staff-detail/staff-detail.component';
 import { StaffEditComponent  } from './components/staff-edit/staff-edit.component';
+import { UserDetailComponent  } from './components/user-detail/user-detail.component';
+import { UserEditComponent  } from './components/user-edit/user-edit.component';
 
 //Routes
 export const appRoutes: Routes = [
@@ -43,6 +45,8 @@ export const appRoutes: Routes = [
       {path: 'operacion/edit/:id', component: FinanceEditComponent},
       {path: 'staff/:id', component: StaffDetailComponent},
       {path: 'staff/edit/:id', component: StaffEditComponent},
+      {path: 'user/:id', component: UserDetailComponent},
+      {path: 'user/edit/:id', component: UserEditComponent},
     ]
   },
   {path: '**'   , component: HomeComponent}

@@ -11,12 +11,16 @@ import {ListComponent} from './components/list/list.component';
 import {AddComponent} from './components/add/add.component';
 import {SearchComponent} from './components/search/search.component';
 
+//Pipe para la búsqueda
+import {SearchPipe} from './pipes/search.pipe';
+
 @NgModule({
   declarations: [
     MainComponent,
     ListComponent,
     AddComponent,
-    SearchComponent
+    SearchComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,

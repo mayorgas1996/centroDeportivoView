@@ -20,6 +20,10 @@ import { DirectorEditComponent } from './components/director-edit/director-edit.
 import { FinanceEditComponent } from './components/finance-edit/finance-edit.component';
 import { StaffDetailComponent } from './components/staff-detail/staff-detail.component';
 import { StaffEditComponent } from './components/staff-edit/staff-edit.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { StaffEditComponent } from './components/staff-edit/staff-edit.component
     DirectorEditComponent,
     FinanceEditComponent,
     StaffDetailComponent,
-    StaffEditComponent
+    StaffEditComponent,
+    UserDetailComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
