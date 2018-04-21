@@ -39,13 +39,7 @@ export class ListComponent implements OnInit {
   getFinances(){
     this._financeService.getFinances(this.token).subscribe(
       data => {
-        console.log("Operaciones: " + JSON.stringify(data));
         this.finances  = data;
-
-        for (let op of this.finances) {
-            op.FECHA = op.FECHA.slice(0,10).toString().replace('-','/').replace('-','/');
-        }
-
       },
       err => {
         console.log(<any>err);

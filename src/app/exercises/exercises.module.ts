@@ -5,6 +5,9 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ExercisesRoutingModule} from './exercises-routing.module';
 
+//Pipe para la búsqueda
+import {SearchPipe} from './pipes/search.pipe';
+
 //Componentes
 import {MainComponent} from './components/main/main.component';
 import {ListComponent} from './components/list/list.component';
@@ -16,7 +19,8 @@ import {SearchComponent} from './components/search/search.component';
     MainComponent,
     ListComponent,
     AddComponent,
-    SearchComponent
+    SearchComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,

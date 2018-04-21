@@ -1,0 +1,29 @@
+<h2>Detalles de {{exercise.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #exerciseProfileForm="ngForm">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Nombre</label>
+        <input type="text" name="nombre" #nombre="ngModel" placeholder="Nombre del ejercicio" [(ngModel)]="exercise.NOMBRE" class="form-control" readonly/>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Grupo Muscular</label>
+      <select class="form-control" name="grupo"  #grupo="ngModel" [(ngModel)]="exercise.GRUPO_MUSCULAR" readonly>
+        <option selected>{{exercise.GRUPO_MUSCULAR}}</option>
+      </select>
+    </div>
+
+  </div>
+  <p>
+    <label>Dificultad</label>
+    <select class="form-control" name="actividad"  #actividad="ngModel" [(ngModel)]="exercise.DIFICULTAD" readonly>
+      <option selected>{{exercise.DIFICULTAD}}</option>
+    </select>
+  </p>
+  <p>
+    <label>Información</label>
+    <textarea name="informacion" #informacion="ngModel" [(ngModel)]="exercise.INFORMACION" class="form-control" readonly></textarea>
+  </p>
+
+</form>

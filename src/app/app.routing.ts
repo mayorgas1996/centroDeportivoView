@@ -16,6 +16,8 @@ import { StaffDetailComponent  } from './components/staff-detail/staff-detail.co
 import { StaffEditComponent  } from './components/staff-edit/staff-edit.component';
 import { UserDetailComponent  } from './components/user-detail/user-detail.component';
 import { UserEditComponent  } from './components/user-edit/user-edit.component';
+import { ExerciseDetailComponent  } from './components/exercise-detail/exercise-detail.component';
+import { ExerciseEditComponent  } from './components/exercise-edit/exercise-edit.component';
 
 //Routes
 export const appRoutes: Routes = [
@@ -47,6 +49,8 @@ export const appRoutes: Routes = [
       {path: 'staff/edit/:id', component: StaffEditComponent},
       {path: 'user/:id', component: UserDetailComponent},
       {path: 'user/edit/:id', component: UserEditComponent},
+      {path: 'exercise/:id', component: ExerciseDetailComponent},
+      {path: 'exercise/edit/:id', component: ExerciseEditComponent},
     ]
   },
   {path: '**'   , component: HomeComponent}

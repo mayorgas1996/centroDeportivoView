@@ -49,8 +49,7 @@ export class FinanceEditComponent implements OnInit {
             }
 
             this.finance = data[0];
-            var d = new Date(this.finance.FECHA);
-            this.finance.FECHA = d.toISOString().slice(0,10).toString().replace('-','/').replace('-','/');
+
           },
           err =>{
             this._router.navigate(['/home']);
@@ -61,9 +60,13 @@ export class FinanceEditComponent implements OnInit {
   }
 
   onSubmit(){
+
+    this.finance.FECHA = this.finance.FECHA.replace('-','/').replace('-','/');
+
     this._financeService.updateFinance(this.token,this.finance).subscribe(
       data =>{
         this.status= 'success';
+        this.finance.FECHA = this.finance.FECHA.replace('/','-').replace('/','-');
       },
       err =>{
         console.log(err);

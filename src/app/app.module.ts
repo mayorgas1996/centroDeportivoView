@@ -22,7 +22,8 @@ import { StaffDetailComponent } from './components/staff-detail/staff-detail.com
 import { StaffEditComponent } from './components/staff-edit/staff-edit.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-
+import { ExerciseDetailComponent } from './components/exercise-detail/exercise-detail.component';
+import { ExerciseEditComponent } from './components/exercise-edit/exercise-edit.component';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     StaffDetailComponent,
     StaffEditComponent,
     UserDetailComponent,
-    UserEditComponent
+    UserEditComponent,
+    ExerciseDetailComponent,
+    ExerciseEditComponent
   ],
   imports: [
     BrowserModule,
