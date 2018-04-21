@@ -6,9 +6,10 @@ export class Court{
     public PRECIO_CON_LUZ:string,
     public HORA_APERTURA: string,
     public HORA_CIERRE: string,
-    public HORA_INICIO_LUZ: string
+    public HORA_INICIO_LUZ: string,
+    public ACTIVO:boolean
 
   )
   { }
-  
+
 }

@@ -14,7 +14,10 @@ export class Staff{
     public ID_CENTRO:string,
     public ADMINISTRATIVO:boolean,
     public DEPORTIVO:boolean,
-    public ESPECIALIDAD: string
+    public ESPECIALIDAD: string,
+    public ACTIVO: boolean,
+    public BAJA: boolean
+
   )
   { }
 

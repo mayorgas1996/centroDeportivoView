@@ -15,7 +15,7 @@
         El nombre es obligatorio
       </span>
     </p>
-    <div class="form-row col-lg-12">
+    <div class="form-row">
       <div class="form-group col-lg-6">
     <p>
       <label>Precio sin iluminación</label>
@@ -29,21 +29,21 @@
     </p>
     </div>
 </div>
-<div class="form-row col-lg-12">
-  <div class="form-group col-lg-4">
+<div class="form-row">
+  <div class="form-group col-lg-3">
 <p>
   <label>Hora de apertura</label>
     <input type="time" name="hora_apertura" #hora_apertura="ngModel" [(ngModel)]="court.HORA_APERTURA" class="form-control" required/>
 
 </p>
 </div>
-<div class="form-group col-lg-4">
+<div class="form-group col-lg-3">
 <p>
   <label>Hora de cierre</label>
   <input type="time" name="hora_cierre" #hora_cierre="ngModel" [(ngModel)]="court.HORA_CIERRE" class="form-control" required/>
 </p>
 </div>
-<div class="form-group col-lg-4">
+<div class="form-group col-lg-6">
 <p>
   <label>Hora de inicio de la iluminación</label>
   <input type="time" name="hora_luz" #hora_luz="ngModel" [(ngModel)]="court.HORA_INICIO_LUZ" class="form-control" required/>

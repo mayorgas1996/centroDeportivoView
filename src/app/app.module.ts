@@ -24,7 +24,9 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { ExerciseDetailComponent } from './components/exercise-detail/exercise-detail.component';
 import { ExerciseEditComponent } from './components/exercise-edit/exercise-edit.component';
-
+import { CourtDetailComponent } from './components/court-detail/court-detail.component';
+import { CourtEditComponent } from './components/court-edit/court-edit.component';
+import { PlanEditComponent } from './components/plan-edit/plan-edit.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { ExerciseEditComponent } from './components/exercise-edit/exercise-edit.
     UserDetailComponent,
     UserEditComponent,
     ExerciseDetailComponent,
-    ExerciseEditComponent
+    ExerciseEditComponent,
+    CourtDetailComponent,
+    CourtEditComponent,
+    PlanEditComponent
   ],
   imports: [
     BrowserModule,

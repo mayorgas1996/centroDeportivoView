@@ -56,6 +56,18 @@ export class StaffService{
     return this._http.put(this.url+'tecnicos/'+staf.ID_TECNICO, params,{headers:headers}).map(res => res.json());
   }
 
+  updateStaffContract(token,staf){
+    let params = JSON.stringify(staf);
+
+    console.log("Actualizando: " + params);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.put(this.url+'tecnicos/contrato/'+staf.ID_TECNICO, params,{headers:headers}).map(res => res.json());
+  }
+
   deleteStaff(token,id_staf){
     let params = "";
     let headers = new Headers();

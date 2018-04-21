@@ -1,0 +1,50 @@
+<h2>Detalles de {{court.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #courtProfileForm="ngForm">
+  <div class="alert alert-info" *ngIf="!court.ACTIVO">
+    Pista Deportiva deshabilitada actualmente.
+  </div>
+  <p>
+    <label>Nombre</label>
+    <input type="text" name="name" #name="ngModel" [(ngModel)]="court.NOMBRE" class="form-control" readonly/>
+    <span *ngIf="!name.valid && name.touched">
+      El nombre es obligatorio
+    </span>
+  </p>
+  <div class="form-row">
+    <div class="form-group col-lg-6">
+  <p>
+    <label>Precio sin iluminación</label>
+    <input type="text" name="precio_sin_luz" #precio_sin_luz="ngModel" [(ngModel)]="court.PRECIO_SIN_LUZ" class="form-control" readonly/>
+  </p>
+</div>
+<div class="form-group col-lg-6">
+  <p>
+    <label>Precio con iluminación</label>
+    <input type="text" name="precio_con_luz" #precio_con_luz="ngModel" [(ngModel)]="court.PRECIO_CON_LUZ" class="form-control" readonly/>
+  </p>
+  </div>
+</div>
+<div class="form-row">
+<div class="form-group col-lg-3">
+<p>
+<label>Hora de apertura</label>
+  <input type="time" name="hora_apertura" #hora_apertura="ngModel" [(ngModel)]="court.HORA_APERTURA" class="form-control" readonly/>
+
+</p>
+</div>
+<div class="form-group col-lg-3">
+<p>
+<label>Hora de cierre</label>
+<input type="time" name="hora_cierre" #hora_cierre="ngModel" [(ngModel)]="court.HORA_CIERRE" class="form-control" readonly/>
+</p>
+</div>
+<div class="form-group col-lg-6">
+<p>
+<label>Hora de inicio de la iluminación</label>
+<input type="time" name="hora_luz" #hora_luz="ngModel" [(ngModel)]="court.HORA_INICIO_LUZ" class="form-control" readonly/>
+</p>
+</div>
+</div>
+
+</form>

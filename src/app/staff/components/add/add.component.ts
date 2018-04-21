@@ -25,7 +25,7 @@ export class AddComponent implements OnInit {
     private _loginService: LoginService
   ){
     this.title = 'Crear Técnico';
-    this.staff = new Staff('','','','pass','','','','','','','','',false,false,'');
+    this.staff = new Staff('','','','pass','','','','','','','','',false,false,'',true,false);
     this.token = this._loginService.getToken();
     this.url = GLOBAL.url;
   }
@@ -49,7 +49,7 @@ export class AddComponent implements OnInit {
 
       data =>{
         this.status= 'success';
-        this.staff = new Staff('','','','','','','','','','','','',false,false,'');
+        this.staff = new Staff('','','','','','','','','','','','',false,false,'',true,false);
       },
       err =>{
         this.status = 'error';

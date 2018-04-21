@@ -56,6 +56,18 @@ export class PlanService{
     return this._http.put(this.url+'planes/'+plan.ID_PLAN, params,{headers:headers}).map(res => res.json());
   }
 
+  updatePlanStatus(token,plan){
+    let params = JSON.stringify(plan);
+
+    console.log("Actualizando: " + params);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.put(this.url+'planes/estado/'+plan.ID_PLAN, params,{headers:headers}).map(res => res.json());
+  }
+
   deletePlan(token,id_plan){
     let params = "";
     let headers = new Headers();

@@ -34,6 +34,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(){
     this.getCourts();
+    console.log(JSON.stringify(this.courts));
   }
 
   getCourts(){

@@ -23,7 +23,7 @@
         <th>Nombre</th>
         <th>Precios (Iluminación)</th>
         <th>Hora inicio iluminación</th>
-        <th>Hora apertura / cierre</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody *ngFor="let court of courts">
@@ -37,13 +37,11 @@
         <td>
           {{court.HORA_INICIO_LUZ}}
         </td>
-        <td>
-          {{court.HORA_APERTURA}} / {{court.HORA_CIERRE}}
-        </td>
-        <td>
+
+        <td style="width:180px">
           <a [routerLink]="['/home/pista', court.ID_PISTA]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
           <a [routerLink]="['/home/pista/edit', court.ID_PISTA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
-          <a href="#myModal-{{court.ID_PISTA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
+          <!--a href="#myModal-{{court.ID_PISTA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a-->
 
           <!-- Modal HTML -->
           <div id="myModal-{{court.ID_PISTA}}" class="modal fade">

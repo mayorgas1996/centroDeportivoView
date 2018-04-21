@@ -37,11 +37,11 @@
   </div>
 
 <div *ngIf="user.ACTIVO">
-  <a class="btn btn-danger btn-sm" (click)="setActivo(0)"><span class="octicon octicon-x"></span> Dar de baja</a>
-  <a class="btn btn-primary btn-sm" (click)="setActivo(1)"><span class="octicon octicon-tools"></span> Actualizar plan</a>
+  <button class="btn btn-danger btn-sm" (click)="setActivo(0)"><span class="octicon octicon-x"></span> Dar de baja</button>
+  <button class="btn btn-primary btn-sm" (click)="setActivo(1)"><span class="octicon octicon-tools"></span> Actualizar plan</button>
 </div>
 <div *ngIf="!user.ACTIVO">
-  <a class="btn btn-success btn-sm" (click)="setActivo(1)"><span class="octicon octicon-verified"></span> Dar de alta</a>
+  <button class="btn btn-success btn-sm" (click)="setActivo(1)"><span class="octicon octicon-verified"></span> Dar de alta</button>
 </div>
 <br />
   <hr />

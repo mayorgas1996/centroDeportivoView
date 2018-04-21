@@ -1,0 +1,68 @@
+<h2>Modificar {{court.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #courtProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Pista Deportiva actualizada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización de la Pista Deportiva.
+  </div>
+  <div class="alert alert-info" *ngIf="!court.ACTIVO">
+    Pista Deportiva deshabilitada actualmente.
+  </div>
+  <p>
+    <label>Nombre</label>
+    <input type="text" name="name" #name="ngModel" [(ngModel)]="court.NOMBRE" class="form-control" required/>
+    <span *ngIf="!name.valid && name.touched">
+      El nombre es obligatorio
+    </span>
+  </p>
+  <div class="form-row">
+    <div class="form-group col-lg-6">
+  <p>
+    <label>Precio sin iluminación</label>
+    <input type="text" name="precio_sin_luz" #precio_sin_luz="ngModel" [(ngModel)]="court.PRECIO_SIN_LUZ" class="form-control" required/>
+  </p>
+</div>
+<div class="form-group col-lg-6">
+  <p>
+    <label>Precio con iluminación</label>
+    <input type="text" name="precio_con_luz" #precio_con_luz="ngModel" [(ngModel)]="court.PRECIO_CON_LUZ" class="form-control" required/>
+  </p>
+  </div>
+</div>
+<div class="form-row">
+<div class="form-group col-lg-3">
+<p>
+<label>Hora de apertura</label>
+  <input type="time" name="hora_apertura" #hora_apertura="ngModel" [(ngModel)]="court.HORA_APERTURA" class="form-control" required/>
+
+</p>
+</div>
+<div class="form-group col-lg-3">
+<p>
+<label>Hora de cierre</label>
+<input type="time" name="hora_cierre" #hora_cierre="ngModel" [(ngModel)]="court.HORA_CIERRE" class="form-control" required/>
+</p>
+</div>
+<div class="form-group col-lg-6">
+<p>
+<label>Hora de inicio de la iluminación</label>
+<input type="time" name="hora_luz" #hora_luz="ngModel" [(ngModel)]="court.HORA_INICIO_LUZ" class="form-control" required/>
+</p>
+</div>
+</div>
+
+<div class="form-row">
+
+<button type="submit" class="btn btn-primary" [disabled]="!courtProfileForm.form.valid">Modificar</button>
+
+<div *ngIf="court.ACTIVO" class="pl-4 pr-4">
+<button (click)="setActivo(0)" data-toggle="modal" class="btn btn-info "><span class="octicon octicon-circle-slash "></span> Deshabilitar</button>
+</div>
+<div *ngIf="!court.ACTIVO" class="pl-4 pr-4">
+<button (click)="setActivo(1)" class="btn btn-info "><span class="octicon octicon-verified"></span> Habilitar</button>
+</div>
+
+</div>
+</form>

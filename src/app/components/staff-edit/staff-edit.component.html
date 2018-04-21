@@ -7,6 +7,12 @@
   <div class="alert alert-danger" *ngIf="status == 'error'">
     Fallo en la actualización del Técnico.
   </div>
+  <div class="alert alert-info" *ngIf="staff.BAJA">
+    Técnico dado de baja.
+  </div>
+  <div class="alert alert-info" *ngIf="!staff.ACTIVO">
+    Este Técnico no trabaja actualmente en este centro.
+  </div>
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Nombre</label>
@@ -81,7 +87,27 @@
     </div>
   </div>
 
+<hr />
+
+  <div class="form-row">
+
+  <div *ngIf="!staff.BAJA">
+  <button (click)="setEstado(1)" class="btn btn-danger "><span class="octicon octicon-x"></span> Dar de baja</button>
+  </div>
+  <div *ngIf="staff.BAJA">
+  <button (click)="setEstado(0)" class="btn btn-success "><span class="octicon octicon-verified"></span> Dar de alta</button>
+  </div>
+
+  <div *ngIf="staff.ACTIVO" class="pl-4 pr-4">
+  <button (click)="setActivo(0)" data-toggle="modal" class="btn btn-info "><span class="octicon octicon-trashcan"></span> Despedir</button>
+  </div>
+  <div *ngIf="!staff.ACTIVO" class="pl-4 pr-4">
+  <button (click)="setActivo(1)" class="btn btn-info "><span class="octicon octicon-trashcan"></span> Contratar</button>
+  </div>
 
   <button type="submit" class="btn btn-primary" [disabled]="!staffProfileForm.form.valid">Modificar</button>
-
+  </div>
 </form>
+
+<br />
+<br />

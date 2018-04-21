@@ -1,7 +1,12 @@
 <h2>Detalles de {{staff.NOMBRE}}</h2>
 
 <form class="col-lg-6 offset-lg-3 mt-5" #staffProfileForm="ngForm">
-
+  <div class="alert alert-info" *ngIf="staff.BAJA">
+    Técnico dado de baja.
+  </div>
+  <div class="alert alert-info" *ngIf="!staff.ACTIVO">
+    Este Técnico no trabaja actualmente en este centro.
+  </div>
   <div class="form-row">
     <div class="form-group col-md-12">
       <label>Nombre</label>

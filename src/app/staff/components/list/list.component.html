@@ -38,28 +38,6 @@
         <td>
           <a [routerLink]="['/home/staff', staff.ID_TECNICO]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
           <a [routerLink]="['/home/staff/edit', staff.ID_TECNICO]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
-          <a href="#myModal-{{staff.ID_TECNICO}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
-
-          <!-- Modal HTML -->
-          <div id="myModal-{{staff.ID_TECNICO}}" class="modal fade">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">¿Estás seguro?</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                  <p>¿Seguro que quieres eliminar a <strong>{{staff.NOMBRE}}</strong>?</p>
-                  <p class="text-warning"><small>Si borras este Técnico, ya no pertenecerá al sistema.</small></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                  <button type="button" (click)="deleteStaff(staff.ID_TECNICO)" class="btn btn-primary">Borrar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
         </td>
       </tr>

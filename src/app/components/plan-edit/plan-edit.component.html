@@ -1,0 +1,63 @@
+<h2>Modificar {{plan.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #planProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Plan Deportivo actualizado con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización del Plan Deportivo.
+  </div>
+
+  <div class="alert alert-info" *ngIf="!plan.ACTIVO">
+    Este Plan no está disponible en el centro.
+  </div>
+  <p>
+
+    <label>Nombre</label>
+    <input type="text" name="name" #name="ngModel" [(ngModel)]="plan.NOMBRE" class="form-control" required/>
+    <span *ngIf="!name.valid && name.touched">
+      El nombre es obligatorio
+    </span>
+  </p>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Gastos de inscripción (€)</label>
+      <input type="text" name="gastos" #gastos="ngModel" [(ngModel)]="plan.GASTOS_INSCRIPCION" class="form-control" required/>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Coste mensual (€)</label>
+      <input type="text" name="coste" #coste="ngModel" [(ngModel)]="plan.COSTE_MENSUAL" class="form-control" required/>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Edad mínima</label>
+      <input type="number" name="edad_min" #edad_min="ngModel" [(ngModel)]="plan.EDAD_MIN" class="form-control" required/>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Edad máxima</label>
+      <input type="number" name="edad_max" #edad_max="ngModel" [(ngModel)]="plan.EDAD_MAX" class="form-control" required/>
+    </div>
+  </div>
+  <hr />
+    <div class="custom-control custom-checkbox">
+<input type="checkbox" class="custom-control-input" id="customCheck1" name="agua" #agua="ngModel" [(ngModel)]="plan.ACCESO_ZONA_ACUATICA">
+<label class="custom-control-label" for="customCheck1" ng-checked="plan.ACCESO_ZONA_ACUATICA">Acceso a zona acuática</label>
+</div>
+
+<div class="custom-control custom-checkbox">
+<input type="checkbox" class="custom-control-input" id="customCheck2" name="finde" #finde="ngModel" [(ngModel)]="plan.SABADOS_Y_DOMINGOS">
+<label class="custom-control-label" for="customCheck2" ng-checked="plan.SABADOS_Y_DOMINGOS">Acceso sabados y domingos</label>
+</div>
+
+<br />
+  <div class="form-row">
+<div *ngIf="plan.ACTIVO" class="pl-4 pr-4">
+<button (click)="setActivo(0)" data-toggle="modal" class="btn btn-info "><span class="octicon octicon-x"></span> Desactivar</button>
+</div>
+<div *ngIf="!plan.ACTIVO" class="pl-4 pr-4">
+<button (click)="setActivo(1)" class="btn btn-info "><span class="octicon octicon-verified"></span> Activar</button>
+</div>
+  <button type="submit" class="btn btn-primary" [disabled]="!planProfileForm.form.valid">Modificar</button>
+</div>
+</form>

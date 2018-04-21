@@ -25,7 +25,7 @@ export class AddComponent implements OnInit {
     private _loginService: LoginService
   ){
     this.title = 'Crear Pista Deportiva';
-    this.court = new Court('','','','','','','');
+    this.court = new Court('','','','','','','',true);
     this.token = this._loginService.getToken();
     this.url = GLOBAL.url;
   }
@@ -41,7 +41,7 @@ export class AddComponent implements OnInit {
 
       data =>{
         this.status= 'success';
-        this.court = new Court('','','','','','','');
+        this.court = new Court('','','','','','','',true);
       },
       err =>{
         this.status = 'error';

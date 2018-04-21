@@ -1,7 +1,13 @@
 <div class="col-lg-12">
 
   <h3>{{title}}</h3>
+  <div class="input-group pt-4">
 
+    <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Ver operaciones con fecha </button>
+    <input type="date" [(ngModel)]="busqueda" class="form-control col-lg-3" />
+  </div>
+
+  <br />
   <div class="alert alert-success" *ngIf="status == 'success'">
     Operación borrada con éxito.
   </div>
@@ -18,7 +24,7 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let finance of finances">
+    <tbody *ngFor="let finance of finances | search:busqueda">
       <tr>
         <td>
           {{finance.MOTIVO}}

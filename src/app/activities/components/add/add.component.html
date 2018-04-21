@@ -28,8 +28,46 @@
         </div>
 
       </div>
+      <div class="form-row">
+      <div class="form-group col-md-6">
+          <label>Día de la semana</label>
+          <select class="form-control" name="dia"  #dia="ngModel" [(ngModel)]="activity.DIA_SEMANA" required>
+            <option value="lunes" selected>Lunes</option>
+            <option value="martes">Martes</option>
+            <option value="miercoles">Miercoles</option>
+            <option value="jueves">Jueves</option>
+            <option value="viernes">Viernes</option>
+            <option value="sabado">Sábado</option>
+            <option value="domingo">Domingo</option>
 
+          </select>
+      </div>
 
+      <div class="form-group col-md-6">
+          <label>Hora comienzo</label>
+          <input type="time" name="nombre" #nombre="ngModel" placeholder="Hora de comienzo" [(ngModel)]="activity.HORA_INICIO" class="form-control" required/>
+      </div>
+    </div>
+          <div class="form-row">
+      <div class="form-group col-md-6">
+          <label>Tecnico</label>
+          <select class="form-control" name="tecnico"  #tecnico="ngModel" [(ngModel)]="activity.ID_TECNICO" required>
+            <ng-container *ngFor="let staff of staffs">
+
+            <option value="{{staff.ID_TECNICO}}">{{staff.NOMBRE}}</option>
+
+            </ng-container>
+
+          </select>
+              </div>
+
+      <div class="form-group col-md-6">
+          <label>Sala</label>
+          <select class="form-control" name="sala"  #sala="ngModel" [(ngModel)]="activity.ID_SALA" required>
+<option *ngFor="let room of rooms" value="{{room.ID_PLAN}}">{{room.NOMBRE}}</option>
+          </select>
+              </div>
+    </div>
       <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
     </form>
   </div>

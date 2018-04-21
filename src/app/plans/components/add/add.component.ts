@@ -26,7 +26,7 @@ export class AddComponent {
     private _loginService: LoginService
   ){
     this.title = 'Crear Plan';
-    this.plan = new Plan('','','','',18,0,false,false);
+    this.plan = new Plan('','','','',18,0,false,false,true);
     this.token = this._loginService.getToken();
     this.url = GLOBAL.url;
   }
@@ -40,7 +40,7 @@ export class AddComponent {
 
       data =>{
         this.status= 'success';
-        this.plan = new Plan('','','','',18,0,false,false);
+        this.plan = new Plan('','','','',18,0,false,false,true);
       },
       err =>{
         this.status = 'error';

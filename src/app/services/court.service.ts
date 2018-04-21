@@ -56,6 +56,18 @@ export class CourtService{
     return this._http.put(this.url+'pistas/'+pista.ID_PISTA, params,{headers:headers}).map(res => res.json());
   }
 
+  updateCourtStatus(token,pista){
+    let params = JSON.stringify(pista);
+
+    console.log("Actualizando: " + params);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.put(this.url+'pistas/estado/'+pista.ID_PISTA, params,{headers:headers}).map(res => res.json());
+  }
+
   deleteCourt(token,id_pista){
     let params = "";
     let headers = new Headers();

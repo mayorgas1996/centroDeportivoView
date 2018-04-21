@@ -29,7 +29,7 @@ export class StaffEditComponent implements OnInit {
   ){
     this.title = 'Listar';
     this.url = GLOBAL.url;
-    this.staff = new Staff('','','','','','','','','','','','',false,false,'');
+    this.staff = new Staff('','','','','','','','','','','','',false,false,'',false,false);
     this.token = this._loginService.getToken();
   }
 
@@ -73,7 +73,7 @@ export class StaffEditComponent implements OnInit {
       this.staff.ADMINISTRATIVO = true;
       this.staff.DEPORTIVO = false;
     }
-    
+
     this._staffService.updateStaff(this.token,this.staff).subscribe(
       data =>{
         this.status= 'success';
@@ -85,6 +85,36 @@ export class StaffEditComponent implements OnInit {
 
     )
 
+  }
+
+
+  setEstado(baja){
+
+    this.staff.BAJA = baja;
+    this._staffService.updateStaffContract(this.token,this.staff).subscribe(
+      data =>{
+        this.status= 'success';
+      },
+      err =>{
+        console.log(err);
+        this.status = 'error';
+      }
+    )
+  }
+
+
+  setActivo(activo){
+
+    this.staff.ACTIVO = activo;
+    this._staffService.updateStaffContract(this.token,this.staff).subscribe(
+      data =>{
+        this.status= 'success';
+      },
+      err =>{
+        console.log(err);
+        this.status = 'error';
+      }
+    )
   }
 
 }

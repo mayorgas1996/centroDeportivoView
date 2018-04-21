@@ -18,6 +18,9 @@ import { UserDetailComponent  } from './components/user-detail/user-detail.compo
 import { UserEditComponent  } from './components/user-edit/user-edit.component';
 import { ExerciseDetailComponent  } from './components/exercise-detail/exercise-detail.component';
 import { ExerciseEditComponent  } from './components/exercise-edit/exercise-edit.component';
+import { CourtDetailComponent  } from './components/court-detail/court-detail.component';
+import { CourtEditComponent  } from './components/court-edit/court-edit.component';
+import { PlanEditComponent  } from './components/plan-edit/plan-edit.component';
 
 //Routes
 export const appRoutes: Routes = [
@@ -51,6 +54,9 @@ export const appRoutes: Routes = [
       {path: 'user/edit/:id', component: UserEditComponent},
       {path: 'exercise/:id', component: ExerciseDetailComponent},
       {path: 'exercise/edit/:id', component: ExerciseEditComponent},
+      {path: 'pista/:id', component: CourtDetailComponent},
+      {path: 'pista/edit/:id', component: CourtEditComponent},
+      {path: 'plan/edit/:id', component: PlanEditComponent},
     ]
   },
   {path: '**'   , component: HomeComponent}

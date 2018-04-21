@@ -7,7 +7,8 @@ export class Plan{
     public EDAD_MIN: number,
     public EDAD_MAX: number,
     public ACCESO_ZONA_ACUATICA: boolean,
-    public SABADOS_Y_DOMINGOS: boolean
+    public SABADOS_Y_DOMINGOS: boolean,
+    public ACTIVO: boolean
   ){
 
   }
