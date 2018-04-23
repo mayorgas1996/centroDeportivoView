@@ -35,6 +35,7 @@ export const appRoutes: Routes = [
       {path: 'contabilidad', loadChildren: 'app/finances/finances.module#FinancesModule'},
       {path: 'personal', loadChildren: 'app/staff/staff.module#StaffModule'},
       {path: 'actividades', loadChildren: 'app/activities/activities.module#ActivitiesModule'},
+      {path: 'horario', loadChildren: 'app/schedule/schedule.module#ScheduleModule'},
       {path: 'pistas', loadChildren: 'app/courts/courts.module#CourtsModule'},
       {path: 'salas', loadChildren: 'app/rooms/rooms.module#RoomsModule'},
       {path: 'planes', loadChildren: 'app/plans/plans.module#PlansModule'},

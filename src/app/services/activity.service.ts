@@ -65,4 +65,23 @@ export class ActivityService{
     return this._http.post(this.url+'actividades/'+id_actividad,params,{headers:headers}).map(res => res.json());
   }
 
+
+  getStaffAvailable(token,actividad){
+    let params = JSON.stringify(actividad);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.post(this.url+'actividades/disponibilidad/staff',params,{headers:headers}).map(res => res.json());
+  }
+
+  getRoomsAvailable(token,actividad){
+    let params = JSON.stringify(actividad);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.post(this.url+'actividades/disponibilidad/salas',params,{headers:headers}).map(res => res.json());
+  }
+
 }
