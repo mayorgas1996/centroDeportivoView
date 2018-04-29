@@ -1,0 +1,33 @@
+<h2>Modificar {{activity.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #activityProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Actividad actualizada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización de la Actividad.
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nombre</label>
+      <input type="text" name="nombre" #nombre="ngModel" placeholder="Nombre de la actividad" [(ngModel)]="activity.NOMBRE" class="form-control"/>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Tipo actividad</label>
+      <select class="form-control" name="actividad"  #actividad="ngModel" [(ngModel)]="activity.TIPO_ACTIVIDAD" required>
+        <option value="acuatica">Acuática</option>
+        <option value="aerobica">Aeróbica</option>
+        <option value="coreografiada">Coreografiada</option>
+        <option value="cuerpo_mente">Cuerpo y Mente</option>
+        <option value="infantil">Infantil</option>
+        <option value="exterior">Exterior</option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!activityProfileForm.form.valid">Modificar</button>
+
+</form>

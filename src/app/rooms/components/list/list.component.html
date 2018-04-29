@@ -26,7 +26,7 @@
           {{room.AFORO}}
         </td>
         <td>
-          <a [routerLink]="['/home/operacion/edit', room.ID_SALA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
+          <a [routerLink]="['/home/room/edit', room.ID_SALA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
           <a href="#myModal-{{room.ID_SALA }}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
 
           <!-- Modal HTML -->
@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-body">
                   <p>¿Seguro que quieres eliminar <strong>{{room.NOMBRE}}</strong>?</p>
-                  <p class="text-warning"><small>Si borras esta Sala, ya no pertenecerá al sistema.</small></p>
+                  <p class="text-warning"><small>Si borras esta Sala, ya no pertenecerá al sistema y serán borradas todas las dependencias.</small></p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

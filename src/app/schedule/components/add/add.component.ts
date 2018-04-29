@@ -41,7 +41,7 @@ export class AddComponent {
     this.title = 'Configurar horario';
     this.token = this._loginService.getToken();
     this.url = GLOBAL.url;
-    this.schedule = new Schedule('',1,'','','','');
+    this.schedule = new Schedule('',1,'','','','','','','');
     this.staffs = [];
     this.rooms = [];
     this.getActivities();
@@ -51,8 +51,18 @@ export class AddComponent {
 
 
   onSubmit(){
+    console.log("Datos a enviar: " + JSON.stringify(this.schedule));
+    this._activityService.addImpartida(this.token,this.schedule).subscribe(
 
+      data =>{
+        this.status= 'success';
+        this.schedule = new Schedule('',1,'','','','','','','');
+      },
+      err =>{
+        this.status = 'error';
+      }
 
+    )
 
   }
 

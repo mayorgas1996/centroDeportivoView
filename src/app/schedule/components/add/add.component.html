@@ -2,12 +2,12 @@
 
 <div class="offset-lg-1 col-lg-8 mt-3">
   <div class="alert alert-success" *ngIf="status == 'success'">
-    Actividad asignada al horario con éxito.
+    Horario configurado con éxito.
   </div>
   <div class="alert alert-danger" *ngIf="status == 'error'">
-    No se ha podido asignar la Actividad al horario.
+    No se ha podido Configurar el horario.
   </div>
-  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+  <form name="formAdd" #formAdd="ngForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
         <label>Actividad</label>
@@ -47,22 +47,17 @@
       <div class="form-group col-md-6">
         <label>Tecnico</label>
         <select class="form-control" name="tecnico"  #tecnico="ngModel" [(ngModel)]="schedule.ID_TECNICO" required>
-          <ng-container *ngFor="let staff of staffs">
-
-            <option value="{{staff.ID_TECNICO}}">{{staff.NOMBRE}}</option>
-
-          </ng-container>
-
+            <option *ngFor="let staff of staffs" value="{{staff.ID_TECNICO}}">{{staff.NOMBRE}}</option>
         </select>
       </div>
 
       <div class="form-group col-md-6">
         <label>Sala</label>
         <select class="form-control" name="sala"  #sala="ngModel" [(ngModel)]="schedule.ID_SALA" required>
-          <option *ngFor="let room of rooms" value="{{room.ID_PLAN}}">{{room.NOMBRE}}</option>
+          <option *ngFor="let room of rooms" value="{{room.ID_SALA}}">{{room.NOMBRE}}</option>
         </select>
       </div>
     </div>
-    <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />
+    <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!schedule.ID_TECNICO" />
   </form>
 </div>

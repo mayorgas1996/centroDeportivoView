@@ -1,0 +1,42 @@
+<h2>Modificar {{room.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #roomProfileForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Sala actualizada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la actualización de la Sala.
+  </div>
+  <div class="alert alert-info" *ngIf="!room.ACTIVO">
+    Sala deshabilitada actualmente.
+  </div>
+  <div class="form-row col-lg-12">
+    <div class="form-group col-lg-8">
+    <p>
+      <label>Nombre</label>
+      <input type="text" name="nombre" #nombre="ngModel" placeholder="Nombre de la sala" [(ngModel)]="room.NOMBRE" class="form-control"/>
+    </p>
+    </div>
+    <div class="form-group col-lg-4">
+
+
+    <p>
+      <label>Aforo</label>
+      <input type="number" name="aforo" #aforo="ngModel" placeholder="Aforo de la sala" [(ngModel)]="room.AFORO" class="form-control"/>
+    </p>
+</div>
+</div>
+
+<div class="form-row">
+
+<button type="submit" class="btn btn-primary" [disabled]="!roomProfileForm.form.valid">Modificar</button>
+
+<div *ngIf="room.ACTIVO" class="pl-4 pr-4">
+<button (click)="setActivo(0)" data-toggle="modal" class="btn btn-info "><span class="octicon octicon-circle-slash "></span> Deshabilitar</button>
+</div>
+<div *ngIf="!room.ACTIVO" class="pl-4 pr-4">
+<button (click)="setActivo(1)" class="btn btn-info "><span class="octicon octicon-verified"></span> Habilitar</button>
+</div>
+
+</div>
+</form>

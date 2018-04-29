@@ -24,6 +24,44 @@ export class ActivityService{
     return this._http.post(this.url+'actividades', params,{headers:headers}).map(res => res.json());
   }
 
+  getSchedule(token){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.get(this.url+'horario/actividades',{headers:headers}).map(res => res.json());
+  }
+
+  addImpartida(token, schedule){
+    let params = JSON.stringify(schedule);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.post(this.url+'horario/actividades', params,{headers:headers}).map(res => res.json());
+  }
+
+  updateImpartida(token, schedule){
+    let params = JSON.stringify(schedule);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.put(this.url+'horario/actividades/'+schedule.ID_SALA , params,{headers:headers}).map(res => res.json());
+  }
+
+  deleteImpartida(token, schedule){
+    let params = JSON.stringify(schedule);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.post(this.url+'horario/actividades/'+schedule.ID_SALA , params,{headers:headers}).map(res => res.json());
+  }
+
   //Obtener todas las actividades
   getActivities(token){
     let headers = new Headers();

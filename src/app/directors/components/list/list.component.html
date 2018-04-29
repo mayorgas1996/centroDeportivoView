@@ -3,8 +3,7 @@
     <h3>{{title}}</h3>
     <div class="input-group">
       <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Nombre </button>
-      <input [(ngModel)]="busqueda" class="form-control"
-             placeholder="¡Te puedo ayudar a buscar todo lo que quieras!">
+      <input name="busqueda" [(ngModel)]="busqueda" class="form-control" placeholder="¡Te puedo ayudar a buscar todo lo que quieras!" [ngModelOptions]="{standalone: true}">
     </div>
 
     <br />

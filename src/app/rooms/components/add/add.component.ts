@@ -26,7 +26,7 @@ export class AddComponent {
     private _loginService: LoginService
   ){
     this.title = 'Crear';
-    this.room = new Room('','',0);
+    this.room = new Room('','', 0, true);
     this.token = this._loginService.getToken();
     this.url = GLOBAL.url;
   }
@@ -39,7 +39,7 @@ export class AddComponent {
 
       data =>{
         this.status= 'success';
-        this.room = new Room('','',0);
+        this.room = new Room('','',0,true);
       },
       err =>{
         this.status = 'error';

@@ -6,41 +6,41 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute,  Params } from '@angular/router';
 
 import { GLOBAL } from '../../../services/global';
-import { Court  } from '../../../models/court';
-import { CourtService  } from '../../../services/court.service';
+import { Schedule  } from '../../../models/schedule';
+import { ActivityService  } from '../../../services/activity.service';
 import { LoginService  } from '../../../services/login.service'; //Para obtener el token
 
 @Component({
-  selector: 'court-list',
+  selector: 'schedule-list',
   templateUrl: './list.component.html',
-  providers: [CourtService, LoginService]
+  providers: [ActivityService, LoginService]
 
 })
 export class ListComponent implements OnInit {
   public title:string;
-  public courts: Court[];
+  public schedules: Schedule[];
   public token: string;
   public status: string;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _courtService: CourtService,
+    private _activityService: ActivityService,
     private _loginService: LoginService
   ){
-    this.title = 'Listar';
+    this.title = 'Horario de actividades';
     this.token = this._loginService.getToken();
   }
 
   ngOnInit(){
-    this.getCourts();
-    console.log(JSON.stringify(this.courts));
+    this.getCalendario();
+    console.log(JSON.stringify(this.schedules));
   }
 
-  getCourts(){
-    this._courtService.getCourts(this.token).subscribe(
+  getCalendario(){
+    this._activityService.getSchedule(this.token).subscribe(
       data => {
-        this.courts  = data;
+        this.schedules = data;
       },
       err => {
         console.log(<any>err);
@@ -48,19 +48,20 @@ export class ListComponent implements OnInit {
     )
   }
 
-  deleteCourt(id){
+/*
+  deleteActivity(id){
     //Uso de jQuery para el ocultamiento del modal (ventana de confirmación)
     $('#myModal-'+id).modal('hide'); //Para ocultar el modal emergente ya que por si no se oculta
-    this._courtService.deleteCourt(this.token,id).subscribe(
+    this._courtService.deleteActivity(this.token,id).subscribe(
       data =>{
         this.status="success";
-        this.getCourts();
+        this.getActivitys();
       },
       err =>{
         this.status="error";
         console.log(<any>err);
       }
     )
-  }
+  }*/
 
 }

@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
 
-//Imports de nuevos modulos
+//Pipe para la búsqueda en el menu de edición de una rutina
+import {RoutineSearchPipe} from './RoutinePipe/search.pipe';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -27,6 +28,11 @@ import { ExerciseEditComponent } from './components/exercise-edit/exercise-edit.
 import { CourtDetailComponent } from './components/court-detail/court-detail.component';
 import { CourtEditComponent } from './components/court-edit/court-edit.component';
 import { PlanEditComponent } from './components/plan-edit/plan-edit.component';
+import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
+import { ActivityEditComponent } from './components/activity-edit/activity-edit.component';
+import { RoomEditComponent } from './components/room-edit/room-edit.component';
+import { RoutineDetailComponent } from './components/routine-detail/routine-detail.component';
+import { RoutineEditComponent } from './components/routine-edit/routine-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +55,13 @@ import { PlanEditComponent } from './components/plan-edit/plan-edit.component';
     ExerciseEditComponent,
     CourtDetailComponent,
     CourtEditComponent,
-    PlanEditComponent
+    PlanEditComponent,
+    ActivityDetailComponent,
+    ActivityEditComponent,
+    RoomEditComponent,
+    RoutineDetailComponent,
+    RoutineEditComponent,
+    RoutineSearchPipe
   ],
   imports: [
     BrowserModule,

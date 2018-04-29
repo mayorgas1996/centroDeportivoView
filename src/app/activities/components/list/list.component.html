@@ -30,11 +30,26 @@
         <td>
           {{activity.NOMBRE}}
         </td>
-        <td>
-          {{activity.TIPO_ACTIVIDAD}}
+        <td *ngIf="activity.TIPO_ACTIVIDAD == 'acuatica'">
+          Acuática
         </td>
-
+        <td *ngIf="activity.TIPO_ACTIVIDAD == 'aerobica'">
+          Aeróbica
+        </td>
+        <td *ngIf="activity.TIPO_ACTIVIDAD == 'coreografiada'">
+          Coreografiada
+        </td>
+        <td *ngIf="activity.TIPO_ACTIVIDAD == 'cuerpo_mente'">
+          Cuerpo y Mente
+        </td>
+        <td *ngIf="activity.TIPO_ACTIVIDAD == 'infantil'">
+          Infantil
+        </td>
+        <td *ngIf="activity.TIPO_ACTIVIDAD == 'exterior'">
+          Exterior
+        </td>
         <td>
+          <a [routerLink]="['/home/activity', activity.ID_ACTIVIDAD]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
           <a [routerLink]="['/home/activity/edit', activity.ID_ACTIVIDAD]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
           <a href="#myModal-{{activity.ID_ACTIVIDAD}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
 

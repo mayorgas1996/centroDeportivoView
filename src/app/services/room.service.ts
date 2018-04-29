@@ -56,6 +56,16 @@ export class RoomService{
     return this._http.put(this.url+'salas/'+sala.ID_SALA, params,{headers:headers}).map(res => res.json());
   }
 
+  updateRoomStatus(token,room){
+    let params = JSON.stringify(room);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.put(this.url+'salas/estado/'+room.ID_SALA, params,{headers:headers}).map(res => res.json());
+  }
+
   deleteRoom(token,id_sala){
     let params = "";
     let headers = new Headers();

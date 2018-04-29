@@ -5,6 +5,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RoutinesRoutingModule} from './routines-routing.module';
 
+import {RoutineSearchPipe} from './pipes/search.pipe';
+
 //Componentes
 import {MainComponent} from './components/main/main.component';
 import {ListComponent} from './components/list/list.component';
@@ -16,7 +18,8 @@ import {SearchComponent} from './components/search/search.component';
     MainComponent,
     ListComponent,
     AddComponent,
-    SearchComponent
+    SearchComponent,
+    RoutineSearchPipe
   ],
   imports: [
     CommonModule,

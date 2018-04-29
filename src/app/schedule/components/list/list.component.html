@@ -3,48 +3,81 @@
   <h3>{{title}}</h3>
 
   <div class="input-group">
-    <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Nombre </button>
-    <input [(ngModel)]="busqueda" class="form-control"
-           placeholder="¡Te puedo ayudar a buscar todo lo que quieras!">
+    <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Actividades del día </button>
+    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="busqueda">
+      <option selected value="0">Todos</option>
+      <option value="1">Lunes</option>
+      <option value="2">Martes</option>
+      <option value="3">Miercoles</option>
+      <option value="4">Jueves</option>
+      <option value="5">Viernes</option>
+      <option value="6">Sábado</option>
+      <option value="7">Domingo</option>
+    </select>
   </div>
 
   <br />
 
   <div class="alert alert-success" *ngIf="status == 'success'">
-    Pista Deportiva borrada con éxito.
+    Actividad borrada del Horario.
   </div>
   <div class="alert alert-danger" *ngIf="status == 'error'">
-    No se ha podido borrar la Pista Deportiva.
+    No se ha podido borrar la Actividad del Horario.
   </div>
 
   <table class="table table-hover">
     <thead class="thead-default">
       <tr>
-        <th>Nombre</th>
-        <th>Precios (Iluminación)</th>
-        <th>Hora inicio iluminación</th>
+        <th>Día</th>
+        <th>Actividad</th>
+        <th>Hora inicio</th>
+        <th>Sala</th>
+        <th>Técnico</th>
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let court of courts">
+    <tbody *ngFor="let schedule of schedules | search: busqueda">
       <tr>
-        <td>
-          {{court.NOMBRE}}
+        <td *ngIf="schedule.DIA_SEMANA == 1">
+          Lunes
+        </td>
+        <td *ngIf="schedule.DIA_SEMANA == 2">
+          Martes
+        </td>
+        <td *ngIf="schedule.DIA_SEMANA == 3">
+          Miercoles
+        </td>
+        <td *ngIf="schedule.DIA_SEMANA == 4">
+          Jueves
+        </td>
+        <td *ngIf="schedule.DIA_SEMANA == 5">
+          Viernes
+        </td>
+        <td *ngIf="schedule.DIA_SEMANA == 6">
+          Sábado
+        </td>
+        <td *ngIf="schedule.DIA_SEMANA == 7">
+          Domingo
         </td>
         <td>
-          {{court.PRECIO_SIN_LUZ}} ({{court.PRECIO_CON_LUZ}})
+          {{schedule.ACTIVIDAD}}
         </td>
         <td>
-          {{court.HORA_INICIO_LUZ}}
+          {{schedule.HORA_INICIO}}
         </td>
-
+        <td>
+          {{schedule.SALA}}
+        </td>
+        <td>
+          {{schedule.TECNICO}}
+        </td>
         <td style="width:180px">
-          <a [routerLink]="['/home/pista', court.ID_PISTA]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
-          <a [routerLink]="['/home/pista/edit', court.ID_PISTA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
-          <!--a href="#myModal-{{court.ID_PISTA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a-->
+          <a [routerLink]="['/home/horario', schedule.DIA_SEMANA]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
+          <a [routerLink]="['/home/horario/edit', schedule.DIA_SEMANA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
+          <!--a href="#myModal-{{schedule.ID_PISTA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a-->
 
-          <!-- Modal HTML -->
-          <div id="myModal-{{court.ID_PISTA}}" class="modal fade">
+          <!-- Modal HTML
+          <div id="myModal-{{schedule.DIA_SEMANA}}" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -52,17 +85,17 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <p>¿Seguro que quieres eliminar <strong>{{court.NOMBRE}}</strong>?</p>
+                  <p>¿Seguro que quieres eliminar <strong>{{schedule.NOMBRE}}</strong>?</p>
                   <p class="text-warning"><small>Si borras esta Pista Deportiva, ya no pertenecerá al sistema.</small></p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                  <button type="button" (click)="deleteCenter(court.ID_PISTA)" class="btn btn-primary">Borrar</button>
+                  <button type="button" (click)="deleteCenter(schedule.ID_PISTA)" class="btn btn-primary">Borrar</button>
                 </div>
               </div>
             </div>
           </div>
-
+-->
 
         </td>
       </tr>

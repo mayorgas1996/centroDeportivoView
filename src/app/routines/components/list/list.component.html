@@ -1,1 +1,71 @@
-<h3>{{title}}</h3>
+<div class="col-lg-12">
+
+  <h3>{{title}}</h3>
+
+  <div class="input-group">
+    <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Nombre </button>
+    <input [(ngModel)]="busqueda" class="form-control"
+           placeholder="¡Te puedo ayudar a buscar todo lo que quieras!">
+  </div>
+
+  <br />
+
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Rutina borrada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    No se ha podido borrar la Rutina.
+  </div>
+
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th>Nombre</th>
+        <th>Dificultad</th>
+        <th>Dias</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let routine of routines | search: busqueda">
+      <tr>
+        <td>
+          {{routine.NOMBRE}}
+        </td>
+        <td>
+          {{routine.DIFICULTAD}}
+        </td>
+        <td>
+          {{routine.DIAS}}
+        </td>
+        <td >
+          <a [routerLink]="['/home/routine', routine.ID_RUTINA]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
+          <a [routerLink]="['/home/routine/edit', routine.ID_RUTINA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
+          <a href="#myModal-{{routine.ID_RUTINA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
+
+          <!-- Modal HTML -->
+          <div id="myModal-{{routine.ID_RUTINA}}" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">¿Estás seguro?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>¿Seguro que quieres eliminar <strong>{{routine.NOMBRE}}</strong>?</p>
+                  <p class="text-warning"><small>Si borras esta Rutina, ya no pertenecerá al sistema. Además se borrará de todos aquellos usuarios que la tengan asignada.</small></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <button type="button" (click)="deleteRoutine(routine.ID_RUTINA)" class="btn btn-primary">Borrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

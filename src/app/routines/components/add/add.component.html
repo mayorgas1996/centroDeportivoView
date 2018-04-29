@@ -1,1 +1,124 @@
 <h3>{{title}}</h3>
+
+<div class="offset-lg-1 col-lg-8 mt-3">
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Rutina creada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Fallo en la creación de la Rutina.
+  </div>
+  <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-row">
+      <div class="form-group col-lg-6">
+        <p>
+          <label>Nombre</label>
+          <input type="text" name="nombre" #nombre="ngModel" placeholder="Nombre de la rutina" [(ngModel)]="routine.NOMBRE" class="form-control"/>
+        </p>
+      </div>
+      <div class="form-group col-lg-4">
+
+        <p>
+          <label>Dificultad</label>
+          <select class="form-control" name="actividad"  #actividad="ngModel" [(ngModel)]="routine.DIFICULTAD" required>
+            <option value="Baja" selected>Baja</option>
+            <option value="Media-Baja">Media-Baja</option>
+            <option value="Media">Media</option>
+            <option value="Media-Alta">Media-Alta</option>
+            <option value="Alta">Alta</option>
+            <option value="Muy Alta">Muy Alta</option>
+
+          </select>
+        </p>
+      </div>
+      <div class="form-group col-lg-2">
+
+        <p>
+          <label>Duración</label>
+          <input type="number" name="dias" #dias="ngModel" [(ngModel)]="routine.DIAS" class="form-control"/>
+        </p>
+      </div>
+    </div>
+
+    <div *ngIf="routine.EJERCICIOS.length > 0">
+      <h3>Ejercicios añadidos</h3>
+      <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+        <div class="form-group form-row">
+        <div class="col-lg-12">
+          <table class="table table-hover">
+            <thead class="thead-default">
+              <tr>
+                <th>Nombre</th>
+                <th>Series</th>
+                <th>Repeticiones</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let ejercicio of routine.EJERCICIOS; let i = index">
+              <tr>
+                <td>
+                  {{ejercicio.NOMBRE}}
+                </td>
+                <td>
+                  {{routine.SERIES[i]}}
+                </td>
+                <td>
+                  {{routine.REPETICIONES[i]}}
+                </td>
+                <td>
+                  <button (click)="removeOfRoutine(i)" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+
+
+      </div>
+    </div>
+
+    <div *ngIf="vista_ejercicio" class=" form-group ">
+      <hr />
+      <h4 class="pb-4">Añadir ejercicio a la rutina</h4>
+      <div class=" form-group input-group">
+        <button class="btn btn-default" disabled><span class="octicon octicon-search"></span> Nombre del ejercicio </button>
+        <input name="busqueda" [(ngModel)]="busqueda" class="form-control" placeholder="Dime el nombre del ejercicio!">
+      </div>
+
+      <p>
+
+      <select class="form-control" name="ejercicio" [(ngModel)]="exercise.ID_EJERCICIO" required>
+        <option *ngFor="let ejercicio of ejercicios | search: busqueda" value="{{ejercicio.ID_EJERCICIO}}">{{ejercicio.NOMBRE}}</option>
+      </select>
+      </p>
+
+      <div class="form-row">
+        <div class="form-group col-lg-6">
+          <p>
+            <label>Series</label>
+            <input type="number" name="series" placeholder="Series del ejercicio" [(ngModel)]="serie" class="form-control"/>
+          </p>
+        </div>
+        <div class="form-group col-lg-6">
+          <p>
+            <label>Repeticiones</label>
+            <input type="number" name="repeticiones" placeholder="Repeticiones por serie" [(ngModel)]="repeticion" class="form-control"/>
+          </p>
+        </div>
+      </div>
+
+      <button (click)="addRutina()" role="button" data-toggle="modal" class="btn btn-success" [disabled]="!repeticion || !serie || !exercise.ID_EJERCICIO"><span class="octicon octicon-plus"></span> Añadir a rutina </button>
+
+    </div>
+
+    <button *ngIf="!vista_ejercicio" (click)="vista_ejercicio= true" data-toggle="modal" class="btn btn-success"><span class="octicon octicon-plus"></span> Añadir Ejercicio </button>
+
+
+
+    <hr />
+    <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid || routine.EJERCICIOS.length ==0" />
+  </form>
+</div>
