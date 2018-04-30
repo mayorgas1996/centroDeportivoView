@@ -26,6 +26,8 @@ import { ActivityEditComponent } from './components/activity-edit/activity-edit.
 import { RoomEditComponent } from './components/room-edit/room-edit.component';
 import { RoutineDetailComponent } from './components/routine-detail/routine-detail.component';
 import { RoutineEditComponent } from './components/routine-edit/routine-edit.component';
+import { UserStatusComponent } from './components/user-status/user-status.component';
+import { NewAnalysisComponent } from './components/new-analysis/new-analysis.component';
 
 //Pipes
 import {RoutineSearchPipe} from './routines/pipes/search.pipe';
@@ -71,7 +73,9 @@ export const appRoutes: Routes = [
       {path: 'activity/edit/:id', component: ActivityEditComponent},
       {path: 'room/edit/:id', component: RoomEditComponent},
       {path: 'routine/:id', component: RoutineDetailComponent},
-      {path: 'routine/edit/:id', component: RoutineEditComponent, },
+      {path: 'routine/edit/:id', component: RoutineEditComponent},
+      {path: 'user/status/:id', component: UserStatusComponent},
+      {path: 'analysis/create/:id', component: NewAnalysisComponent},
     ]
   },
   {path: '**'   , component: HomeComponent}

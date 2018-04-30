@@ -24,6 +24,23 @@ export class RoutineService{
     return this._http.post(this.url+'rutinas', params,{headers:headers}).map(res => res.json());
   }
 
+
+    addRoutineToUser(token, id_routine, id_user){
+      const datos = {
+        "ID_RUTINA"   : id_routine,
+        "ID_USUARIO"  : id_user
+      };
+
+      let params = JSON.stringify(datos);
+      console.log(params);
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization','Bearer ' + token);
+
+      return this._http.post(this.url+'rutinas/user/add', params,{headers:headers}).map(res => res.json());
+    }
+
+
   addExercisesToRutine(token, routine){
     let params = JSON.stringify(routine);
 
@@ -31,7 +48,7 @@ export class RoutineService{
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization','Bearer ' + token);
 
-    return this._http.post(this.url+'rutinas/'+routine.ID_RUTINA+'/add', params,{headers:headers}).map(res => res.json());
+    return this._http.post(this.url+'rutinas/add/'+ routine.ID_RUTINA, params,{headers:headers}).map(res => res.json());
   }
 
   //Obtener todos los administradores
@@ -51,6 +68,16 @@ export class RoutineService{
     headers.append('Authorization','Bearer ' + token);
 
     return this._http.get(this.url+'rutinas/'+id,{headers:headers}).map(res => res.json());
+
+  }
+
+  //Obtener la rutina de un usuario
+  getUserRoutine(token,id){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization','Bearer ' + token);
+
+    return this._http.get(this.url+'rutinas/usuario/'+id,{headers:headers}).map(res => res.json());
 
   }
 

@@ -25,7 +25,8 @@
       </tr>
     </thead>
     <tbody *ngFor="let user of users | search: busqueda">
-      <tr>
+      <tr [routerLink]="['/home/user', user.ID_USUARIO]" style="cursor:pointer">
+
         <td>
           {{user.NOMBRE}}
         </td>
@@ -35,10 +36,10 @@
         <td>
           {{user.FECHA_FIN}}
         </td>
+
         <td>
-          <a [routerLink]="['/home/user', user.ID_USUARIO]" class="btn btn-info btn-sm"><span class="octicon octicon-search"></span> Ver</a>
+          <a [routerLink]="['/home/user/status', user.ID_USUARIO]" class="btn btn-info btn-sm"><span class="octicon octicon-person"></span> Estado</a>
           <a [routerLink]="['/home/user/edit', user.ID_USUARIO]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
-          <!--a href="#myModal-{{user.ID_USUARIO}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Dar de baja</a-->
           <a href="#myModal-{{user.ID_USUARIO}}" role="button" data-toggle="modal" class="btn btn-success btn-sm" (click)="ultimoDia(user.FECHA_FIN)"><span class="octicon octicon-checklist"></span> Renovar</a>
 
           <!-- Modal HTML -->

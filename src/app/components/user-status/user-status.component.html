@@ -1,0 +1,107 @@
+<h2>Estado de {{user.NOMBRE}}</h2>
+
+<form class="col-lg-6 offset-lg-3 mt-5" #userStatusForm="ngForm">
+  <div class="alert alert-success" *ngIf="status_routine == 'success'">
+    Rutina asignada con éxito.
+  </div>
+  <div class="alert alert-danger" *ngIf="status_routine == 'error'">
+    No se ha podido asignar la Rutina.
+  </div>
+  <div class="alert alert-info" *ngIf="!routine">
+    Usuario carece de rutina.
+  </div>
+
+  <div class="alert alert-info" *ngIf="!analysis">
+    Usuario carece de análisis.
+  </div>
+
+
+  <div class="row justify-content-center">
+    <div>
+      <a href="#myModal-{{user.ID_USUARIO}}" role="button" data-toggle="modal" class="btn btn-success btn-md"><span class="octicon octicon-tag"></span> Asignar rutina</a>
+      <a [routerLink]="['/home/analysis/create', user.ID_USUARIO]" role="button" class="btn btn-success btn-md"><span class="octicon octicon-clippy"></span> Realizar análisis</a>
+    </div>
+  </div>
+  <br />
+  <hr />
+  <br />
+  <div *ngIf="routine">
+    <h4>Rutina actual: <a [routerLink]="['/home/routine', routine.ID_RUTINA]">{{routine.NOMBRE}}</a> </h4>
+  </div>
+  <hr />
+  <div *ngIf="analysis">
+    <h4>Últimos análisis</h4>
+    <br />
+
+<dl class= "row offset-lg-1">
+  <dt class="col-sm-5"></dt>
+  <dd class="col-sm-3"><strong>Actual</strong></dd>
+  <dd class="col-sm-3"><strong>Anterior</strong></dd>
+
+  <dt class="col-sm-5">Fecha</dt>
+  <dd class="col-sm-3">{{analysis.FECHA}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.FECHA}}</dd>
+
+  <dt class="col-sm-5">Peso</dt>
+  <dd class="col-sm-3">{{analysis.PESO}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.PESO}}</dd>
+
+  <dt class="col-sm-5">Grasa Corporal</dt>
+  <dd class="col-sm-3">{{analysis.GRASA_CORPORAL}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.GRASA_CORPORAL}}</dd>
+
+  <dt class="col-sm-5">Porcentaje de agua</dt>
+  <dd class="col-sm-3">{{analysis.PORCENTAJE_AGUA}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.PORCENTAJE_AGUA}}</dd>
+
+  <dt class="col-sm-5">Masa ósea</dt>
+  <dd class="col-sm-3">{{analysis.MASA_OSEA}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.MASA_OSEA}}</dd>
+
+  <dt class="col-sm-5">Masa visceral</dt>
+  <dd class="col-sm-3">{{analysis.MASA_VISCERAL}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.MASA_VISCERAL}}</dd>
+
+  <dt class="col-sm-5">Masa muscular</dt>
+  <dd class="col-sm-3">{{analysis.MASA_MUSCULAR}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.MASA_MUSCULAR}}</dd>
+
+  <dt class="col-sm-5">Edad metabólica</dt>
+  <dd class="col-sm-3">{{analysis.EDAD_METABOLICA}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.EDAD_METABOLICA}}</dd>
+
+  <dt class="col-sm-5">IMC</dt>
+  <dd class="col-sm-3">{{analysis.IMC}}</dd>
+  <dd class="col-sm-3">{{analysis_anterior.IMC}}</dd>
+
+</dl>
+
+
+  </div>
+
+  <!-- Modal HTML -->
+  <div id="myModal-{{user.ID_USUARIO}}" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Asignar rutina a {{user.NOMBRE}}</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>¿Qué rutina quieres asignar al usuario <strong>{{user.NOMBRE}}</strong>?</p>
+          <p class="text-warning"><small>Un usuario solo puede tener una rutina por lo que si tiene una asignada desaparecerá.</small></p>
+          <h4>Seleccione la rutina</h4>
+          <select class="form-control" name="rutina" [(ngModel)]="routine.ID_RUTINA">
+            <option *ngFor="let routine of routines" value="{{routine.ID_RUTINA}}">{{routine.NOMBRE}}</option>
+          </select>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="assignRoutine()" class="btn btn-primary">Asignar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
