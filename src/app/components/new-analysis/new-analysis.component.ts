@@ -50,7 +50,9 @@ export class NewAnalysisComponent implements OnInit {
             if(!data[0]){ //Aquí entra cuando se quiere acceder al ID de un user que no existe
               this._router.navigate(['/home']); //Redirección al home
             }
+
             this.user = data[0];
+            console.log(this.user);
           },
           err =>{
             this._router.navigate(['/home']);

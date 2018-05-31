@@ -71,8 +71,9 @@ export class UserStatusComponent implements OnInit {
             if(!data[0]){ //Aquí entra cuando se quiere acceder al ID de un user que no existe
               this._router.navigate(['/home']); //Redirección al home
             }
+
             this.user = data[0];
-            console.log("Usuario cargado: " + JSON.stringify(this.user));
+            console.log(this.user);
           },
           err =>{
             this._router.navigate(['/home']);
@@ -88,11 +89,12 @@ export class UserStatusComponent implements OnInit {
         this._routineService.getUserRoutine(this.token,id).subscribe(
           data =>{
             console.log("resultado busqueda rutina: " + JSON.stringify(data));
-            if(!data[0])
-              this.routine = null;
-            else
+            if(!data[0] || data.length == 0){
+              this.routine = new Routine ('','','',0,null,null,null);
+            }
+            else{
               this.routine = data[0];
-
+            }
           },
           err =>{
             this._router.navigate(['/home']);
@@ -108,13 +110,19 @@ export class UserStatusComponent implements OnInit {
         this._analysisService.getUserAnalysis(this.token,id).subscribe(
           data =>{
             console.log("resultado busqueda analisis: " + JSON.stringify(data[0]));
-            if(!data[0])
+            if(!data[0]){
               this.analysis = null;
-            else
+            }
+            else{
               this.analysis = data[0];
-            if(data[1])
+            }
+            if(data[1]){
               this.analysis_anterior = data[1];
-
+            }
+            else{
+              console.log("No hay analisis anterior");
+              this.analysis_anterior = new Analysis('','','','','','','','','','','');
+            }
           },
           err =>{
             this._router.navigate(['/home']);
@@ -127,7 +135,14 @@ export class UserStatusComponent implements OnInit {
   getRoutines(){
     this._routineService.getRoutines(this.token).subscribe(
       data => {
-        this.routines  = data;
+        if(data){
+          console.log("Rutinas que hay son: " + JSON.stringify(data));
+          this.routines = data;
+          console.log("Routines tam: " + this.routines.length + " contenido: " + JSON.stringify(this.routines));
+        }
+        else{
+          this.routines = [];
+        }
       },
       err => {
         console.log(<any>err);
@@ -137,6 +152,7 @@ export class UserStatusComponent implements OnInit {
 
   assignRoutine(){
     $('#myModal-'+this.user.ID_USUARIO).modal('hide'); //Para ocultar el modal emergente ya que por si no se oculta
+console.log("Rutina contiene: " + JSON.stringify(this.routine));
 
     this._routineService.addRoutineToUser(this.token, this.routine.ID_RUTINA, this.user.ID_USUARIO).subscribe(
       data => {

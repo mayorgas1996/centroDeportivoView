@@ -40,6 +40,7 @@ export class ListComponent implements OnInit {
   getActivities(){
     this._activityService.getActivities(this.token).subscribe(
       data => {
+        console.log("Actividades: " + JSON.stringify(data));
         this.activities  = data;
       },
       err => {

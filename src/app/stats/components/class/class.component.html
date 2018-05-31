@@ -1,0 +1,37 @@
+<h3>{{title}}</h3>
+
+<h5>Asistencia en el mes actual a la actividad elegida desglosada por día de la semana</h5>
+<div class="form-group">
+  <label>Actividad</label>
+  <select class="form-control" name="act"  #act="ngModel" [(ngModel)]="indice" (change)="repaint()">
+    <ng-container *ngFor="let activity of activities; let i = index">
+      <option value="{{i}}">{{activity.NOMBRE}}</option>
+    </ng-container>
+  </select>
+</div>
+
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+</div>
+<br />
+<br />
+<h5>Asistencia en el mes actual a las actividades dividido por géneros</h5>
+
+<div style="display: block">
+  <canvas baseChart
+          [datasets]="radarChartData"
+          [labels]="radarChartLabels"
+          [chartType]="radarChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

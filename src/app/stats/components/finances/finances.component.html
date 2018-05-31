@@ -1,0 +1,44 @@
+<h3>{{title}}</h3>
+
+<h5>Balance ingresos-gastos del año actual desglosado por meses</h5>
+
+<br />
+<div class="row">
+
+    <div class="col-md-12" style="display: block;">
+    <canvas baseChart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+</div>
+<br /><br />
+<div class="row">
+  <div class="col-md-12" style="margin-bottom: 10px">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th>
+
+        </th>
+        <th *ngFor="let label of lineChartLabels">{{label}}</th>
+      </tr>
+
+      <tr *ngFor="let d of lineChartData; let i = index">
+        <td *ngIf="i==0"><strong>
+          Gastos
+          </strong>
+        </td>
+        <td *ngIf="i==1">
+          <strong>
+          Ingresos
+          </strong>
+        </td>
+        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

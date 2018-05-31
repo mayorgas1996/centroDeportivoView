@@ -7,7 +7,7 @@
   <div class="alert alert-danger" *ngIf="status_routine == 'error'">
     No se ha podido asignar la Rutina.
   </div>
-  <div class="alert alert-info" *ngIf="!routine">
+  <div class="alert alert-info" *ngIf="routine.ID_RUTINA == '' ">
     Usuario carece de rutina.
   </div>
 
@@ -25,7 +25,7 @@
   <br />
   <hr />
   <br />
-  <div *ngIf="routine">
+  <div *ngIf="routine.ID_RUTINA != '' ">
     <h4>Rutina actual: <a [routerLink]="['/home/routine', routine.ID_RUTINA]">{{routine.NOMBRE}}</a> </h4>
   </div>
   <hr />
@@ -92,7 +92,7 @@
           <p class="text-warning"><small>Un usuario solo puede tener una rutina por lo que si tiene una asignada desaparecerá.</small></p>
           <h4>Seleccione la rutina</h4>
           <select class="form-control" name="rutina" [(ngModel)]="routine.ID_RUTINA">
-            <option *ngFor="let routine of routines" value="{{routine.ID_RUTINA}}">{{routine.NOMBRE}}</option>
+            <option *ngFor="let item of routines" value={{item.ID_RUTINA}} >{{item.NOMBRE}}</option>
           </select>
 
         </div>

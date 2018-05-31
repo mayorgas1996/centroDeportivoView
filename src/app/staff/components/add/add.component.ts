@@ -36,15 +36,8 @@ export class AddComponent implements OnInit {
 
   onSubmit(){
     console.log(this.staff);
-    if(this.staff.DEPORTIVO)
-    {
-      this.staff.DEPORTIVO = true;
-    }
-    else
-    {
-      this.staff.ADMINISTRATIVO = true;
-    }
 
+this.staff.FECHA_NACIMIENTO = this.staff.FECHA_NACIMIENTO.replace('-','/').replace('-','/');
     this._staffService.addStaff(this.token,this.staff).subscribe(
 
       data =>{

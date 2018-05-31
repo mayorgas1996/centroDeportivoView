@@ -1,0 +1,13 @@
+<h3>{{title}}</h3>
+
+<h5>Rutinas preferidas entre los usuarios activos del centro deportivo.</h5>
+
+
+<div style="display: block" *ngIf="doughnutChartLabels.length > 0">
+  <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>

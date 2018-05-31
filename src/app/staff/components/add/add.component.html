@@ -33,7 +33,7 @@
     </p>
     <p>
       <label>Fecha Nacimiento</label>
-      <input type="text" name="fecha_nacimiento" placeholder="yyyy/mm/dd" #fecha_nacimiento="ngModel" [(ngModel)]="staff.FECHA_NACIMIENTO" class="form-control" required/>
+      <input type="date" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="staff.FECHA_NACIMIENTO" class="form-control" required/>
     </p>
     <p>
       <label>Domicilio</label>
@@ -62,18 +62,15 @@
       <div class="col-md-4 ">
 
         <br />
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="administrativo" #administrativo="ngModel" [(ngModel)]="staff.ADMINISTRATIVO" value=true checked>
-            Administrativo
-          </label>
+        <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" name="administrativo" #administrativo="ngModel" [(ngModel)]="staff.ADMINISTRATIVO">
+        <label class="custom-control-label" for="customCheck1">Administrativo</label>
         </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="deportivo" #deportivo="ngModel" [(ngModel)]="staff.DEPORTIVO" value=true>
-            Deportivo
-          </label>
+        <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck2" name="deportivo" #deportivo="ngModel" [(ngModel)]="staff.DEPORTIVO">
+        <label class="custom-control-label" for="customCheck2">Deportivo</label>
         </div>
+
       </div>
     </div>
     <input type="submit" class="btn btn-success" value="{{title}}" [disabled]="!formAdd.form.valid" />

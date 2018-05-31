@@ -48,6 +48,7 @@ export const appRoutes: Routes = [
       {path: 'actividades', loadChildren: 'app/activities/activities.module#ActivitiesModule'},
       {path: 'horario', loadChildren: 'app/schedule/schedule.module#ScheduleModule'},
       {path: 'pistas', loadChildren: 'app/courts/courts.module#CourtsModule'},
+      {path: 'estadisticas', loadChildren: 'app/stats/stats.module#StatsModule'},
       {path: 'salas', loadChildren: 'app/rooms/rooms.module#RoomsModule'},
       {path: 'planes', loadChildren: 'app/plans/plans.module#PlansModule'},
       {path: 'usuarios', loadChildren: 'app/users/users.module#UsersModule'},

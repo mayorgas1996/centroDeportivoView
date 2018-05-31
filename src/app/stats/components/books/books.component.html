@@ -1,0 +1,25 @@
+<h3>{{title}}</h3>
+
+<h5>Número de reservas por pista en el año actual. Desglose por meses</h5>
+<br />
+<div class="form-group">
+  <select class="form-control" name="pista"  #pista="ngModel" [(ngModel)]="indice" (change)="repaint()">
+    <ng-container *ngFor="let court of courts; let i = index">
+      <option value="{{i}}">{{court.NOMBRE}}</option>
+    </ng-container>
+  </select>
+</div>
+
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+</div>

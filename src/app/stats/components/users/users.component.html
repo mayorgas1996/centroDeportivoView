@@ -1,0 +1,26 @@
+<h3>{{title}}</h3>
+
+<h5>Usuarios apuntados al centro deportivo, división por sexo.</h5>
+
+
+<div style="display: block">
+  <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<br /><br />
+
+<h5>Usuarios apuntados al centro deportivo, división por edades.</h5>
+
+<div style="display: block">
+  <canvas baseChart
+              [data]="doughnutChartDataAge"
+              [labels]="doughnutChartLabelsAge"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>
