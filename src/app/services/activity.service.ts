@@ -42,16 +42,6 @@ export class ActivityService{
     return this._http.post(this.url+'horario/actividades', params,{headers:headers}).map(res => res.json());
   }
 
-  updateImpartida(token, schedule){
-    let params = JSON.stringify(schedule);
-
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization','Bearer ' + token);
-
-    return this._http.put(this.url+'horario/actividades/'+schedule.ID_SALA , params,{headers:headers}).map(res => res.json());
-  }
-
   deleteImpartida(token, schedule){
     let params = JSON.stringify(schedule);
 
@@ -59,7 +49,7 @@ export class ActivityService{
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization','Bearer ' + token);
 
-    return this._http.post(this.url+'horario/actividades/'+schedule.ID_SALA , params,{headers:headers}).map(res => res.json());
+    return this._http.post(this.url+'horario/borrar/actividad', params,{headers:headers}).map(res => res.json());
   }
 
   //Obtener todas las actividades

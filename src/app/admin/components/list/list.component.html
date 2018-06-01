@@ -24,8 +24,8 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let admin of admins | search: busqueda">
-      <tr>
+    <tbody *ngFor="let admin of admins | search: busqueda; let i = index">
+      <tr *ngIf="i < 10">
         <td>
           {{admin.NOMBRE}}
         </td>

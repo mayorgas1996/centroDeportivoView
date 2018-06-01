@@ -26,8 +26,8 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let center of centers | search: busqueda">
-      <tr>
+    <tbody *ngFor="let center of centers | search: busqueda; let i = index">
+      <tr *ngIf="i < 10">
         <td>
           {{center.NOMBRE}}
         </td>

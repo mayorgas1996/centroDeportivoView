@@ -36,7 +36,7 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let schedule of schedules | search: busqueda">
+    <tbody *ngFor="let schedule of schedules | search: busqueda ">
       <tr>
         <td *ngIf="schedule.DIA_SEMANA == 1">
           Lunes
@@ -72,12 +72,9 @@
           {{schedule.TECNICO}}
         </td>
         <td style="width:180px">
-          <a [routerLink]="['/home/horario', schedule.DIA_SEMANA]" class="btn btn-success btn-sm"><span class="octicon octicon-search"></span> Ver</a>
-          <a [routerLink]="['/home/horario/edit', schedule.DIA_SEMANA]" class="btn btn-primary btn-sm"><span class="octicon octicon-tools"></span> Editar</a>
-          <!--a href="#myModal-{{schedule.ID_PISTA}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a-->
+          <a href="#myModal-{{schedule.ID_SALA}}{{schedule.DIA_SEMANA}}{{schedule.HORA_INICIO}}" role="button" data-toggle="modal" class="btn btn-danger btn-sm"><span class="octicon octicon-trashcan"></span> Eliminar</a>
+          <div id="myModal-{{schedule.ID_SALA}}{{schedule.DIA_SEMANA}}{{schedule.HORA_INICIO}}" class="modal fade">
 
-          <!-- Modal HTML
-          <div id="myModal-{{schedule.DIA_SEMANA}}" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -85,17 +82,17 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <p>¿Seguro que quieres eliminar <strong>{{schedule.NOMBRE}}</strong>?</p>
-                  <p class="text-warning"><small>Si borras esta Pista Deportiva, ya no pertenecerá al sistema.</small></p>
+                  <p>¿Seguro que quieres eliminar <strong>{{schedule.ACTIVIDAD}}</strong> impartida en <strong>{{schedule.SALA}}</strong> ?</p>
+                  <p class="text-warning"><small>Si borras esta configuración, ya no pertenecerá al calendario.</small></p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                  <button type="button" (click)="deleteCenter(schedule.ID_PISTA)" class="btn btn-primary">Borrar</button>
+                  <button type="button" (click)="deleteConfiguracion(schedule)" class="btn btn-primary">Borrar</button>
                 </div>
               </div>
             </div>
           </div>
--->
+
 
         </td>
       </tr>

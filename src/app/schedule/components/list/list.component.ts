@@ -40,6 +40,7 @@ export class ListComponent implements OnInit {
   getCalendario(){
     this._activityService.getSchedule(this.token).subscribe(
       data => {
+        console.log("Datos obtenidos: " + JSON.stringify(data));
         this.schedules = data;
       },
       err => {
@@ -48,20 +49,26 @@ export class ListComponent implements OnInit {
     )
   }
 
-/*
-  deleteActivity(id){
+
+  deleteConfiguracion(item){
+
+    console.log("Se quiere borrar " + item);
+
     //Uso de jQuery para el ocultamiento del modal (ventana de confirmación)
-    $('#myModal-'+id).modal('hide'); //Para ocultar el modal emergente ya que por si no se oculta
-    this._courtService.deleteActivity(this.token,id).subscribe(
+    $(".modal").modal('hide'); //Para ocultar el modal emergente ya que por si no se oculta
+
+    this._activityService.deleteImpartida(this.token,item).subscribe(
       data =>{
         this.status="success";
-        this.getActivitys();
+        this.getCalendario();
       },
       err =>{
         this.status="error";
         console.log(<any>err);
       }
     )
-  }*/
+
+
+  }
 
 }

@@ -12,14 +12,13 @@ import {SearchPipe} from './pipes/search.pipe';
 import {MainComponent} from './components/main/main.component';
 import {ListComponent} from './components/list/list.component';
 import {AddComponent} from './components/add/add.component';
-import {SearchComponent} from './components/search/search.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     ListComponent,
     AddComponent,
-    SearchComponent,
+    
     SearchPipe
   ],
   imports: [
@@ -32,8 +31,7 @@ import {SearchComponent} from './components/search/search.component';
     MainComponent,
     ListComponent,
     AddComponent,
-    SearchComponent
-  ],
+      ],
   providers: [ ]
 
 })

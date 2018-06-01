@@ -24,8 +24,8 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let finance of finances | search:busqueda">
-      <tr>
+    <tbody *ngFor="let finance of finances | search:busqueda; let i = index">
+      <tr *ngIf="i < 10">
         <td>
           {{finance.MOTIVO}}
         </td>

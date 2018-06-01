@@ -24,8 +24,8 @@
         <th style="width:280px">Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of users | search: busqueda">
-      <tr [routerLink]="['/home/user', user.ID_USUARIO]" style="cursor:pointer">
+    <tbody *ngFor="let user of users | search: busqueda; let i = index">
+      <tr *ngIf="i < 15" [routerLink]="['/home/user', user.ID_USUARIO]" style="cursor:pointer">
 
         <td>
           {{user.NOMBRE}}

@@ -9,14 +9,12 @@ import {PlansRoutingModule} from './plans-routing.module';
 import {MainComponent} from './components/main/main.component';
 import {ListComponent} from './components/list/list.component';
 import {AddComponent} from './components/add/add.component';
-import {SearchComponent} from './components/search/search.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     ListComponent,
-    AddComponent,
-    SearchComponent
+    AddComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +25,7 @@ import {SearchComponent} from './components/search/search.component';
   exports:[
     MainComponent,
     ListComponent,
-    AddComponent,
-    SearchComponent
+    AddComponent
   ],
   providers: [ ]
 

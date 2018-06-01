@@ -9,7 +9,6 @@ import {UsersRoutingModule} from './users-routing.module';
 import {MainComponent} from './components/main/main.component';
 import {ListComponent} from './components/list/list.component';
 import {AddComponent} from './components/add/add.component';
-import {SearchComponent} from './components/search/search.component';
 
 //Pipe para la búsqueda
 import {SearchPipe} from './pipes/search.pipe';
@@ -19,7 +18,6 @@ import {SearchPipe} from './pipes/search.pipe';
     MainComponent,
     ListComponent,
     AddComponent,
-    SearchComponent,
     SearchPipe
   ],
   imports: [
@@ -31,9 +29,8 @@ import {SearchPipe} from './pipes/search.pipe';
   exports:[
     MainComponent,
     ListComponent,
-    AddComponent,
-    SearchComponent
-  ],
+    AddComponent
+    ],
   providers: [ ]
 
 })

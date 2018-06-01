@@ -26,8 +26,8 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let court of courts">
-      <tr>
+    <tbody *ngFor="let court of courts; let i = index">
+      <tr *ngIf="i < 10">
         <td>
           {{court.NOMBRE}}
         </td>
